@@ -4,6 +4,10 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.SpringDemo.pojo.Wedding</class>
     <class>com.SpringDemo.pojo.Category</class>
+    <class>com.SpringDemo.pojo.Buses</class>
+    <class>com.SpringDemo.pojo.Orders</class>
+    <class>com.SpringDemo.pojo.Trips</class>
+    <class>com.SpringDemo.pojo.Users</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbase?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

@@ -28,6 +28,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -51,7 +52,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class HomeController {
+//
 
+    public static HashMap<Integer, Category> mapUser = new HashMap<Integer, Category>();
+
+    static {
+        mapUser.put(1, new Category(1, "Nam"));
+        mapUser.put(2, new Category(2, "Darius"));
+        mapUser.put(3, new Category(3, "Rooney"));
+        mapUser.put(4, new Category(4, "Kagawa"));
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public ResponseEntity<List<Category>> getAllUser() {
+        List<Category> listUser = new ArrayList<Category>(mapUser.values());
+        Session session = sessionFactory.getObject().openSession();
+        Query q = session.createQuery("From Category");
+        List<Category> cates = q.getResultList();
+        return new ResponseEntity<List<Category>>(cates, HttpStatus.OK);
+    }
+
+    //
     @Autowired
     private Cloudinary cloudinary;
     @Autowired
@@ -94,7 +115,7 @@ public class HomeController {
         Query q = session.createQuery("From Category");
         List<Category> cates = q.getResultList();
         rtn.put("potato", "King Potato");
-                rtn.put("potats", cates);
+        rtn.put("potats", cates);
 
         return rtn;
     }
