@@ -54,7 +54,7 @@
 
             const testAPI2 = async  () => {
                 try {
-                    var res = await $.get(`http://localhost:8080/SpringDemo/b`)
+                    var res = await $.get(`http://localhost:8080/SpringDemo/users`)
                     console.log(res)
                 } catch (e) {
                     console.log(e)
