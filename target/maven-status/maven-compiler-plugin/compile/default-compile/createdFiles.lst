@@ -1,7 +1,13 @@
-com\SpringDemo\pojo\Category_.class
-com\SpringDemo\config\DispatcherServletInit.class
-com\SpringDemo\pojo\Category.class
-com\SpringDemo\controllers\HomeController.class
+com\SpringDemo\pojo\Orders.class
+com\SpringDemo\pojo\Trips.class
+com\SpringDemo\pojo\Users.class
+com\SpringDemo\pojo\Users_.class
+com\SpringDemo\pojo\Orders_.class
+com\SpringDemo\pojo\Buses.class
 com\SpringDemo\config\WebAppContextConfig.class
+com\SpringDemo\config\DispatcherServletInit.class
+com\SpringDemo\pojo\Trips_.class
+com\SpringDemo\controllers\UserController.class
+com\SpringDemo\pojo\Buses_.class
 com\SpringDemo\config\HibernateConfig.class
 com\SpringDemo\controllers\TestController.class

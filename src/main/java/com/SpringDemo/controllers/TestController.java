@@ -4,7 +4,7 @@
  */
 package com.SpringDemo.controllers;
 
-import com.SpringDemo.pojo.Category;
+import com.SpringDemo.pojo.Users;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
