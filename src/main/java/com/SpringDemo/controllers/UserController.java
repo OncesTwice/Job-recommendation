@@ -109,6 +109,7 @@ public class UserController {
     /* ---------------- CREATE NEW USER ------------------------ */
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody Users user) {
+        System.out.println("123" + user.getFirstname());
         if (mapUser.containsKey(user.getId())) {
             return new ResponseEntity<String>("User Already Exist!", HttpStatus.CONFLICT);
         }
