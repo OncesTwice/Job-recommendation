@@ -1,0 +1,7 @@
+com\SpringDemo\pojo\Category_.class
+com\SpringDemo\config\DispatcherServletInit.class
+com\SpringDemo\pojo\Category.class
+com\SpringDemo\controllers\HomeController.class
+com\SpringDemo\config\WebAppContextConfig.class
+com\SpringDemo\config\HibernateConfig.class
+com\SpringDemo\controllers\TestController.class
