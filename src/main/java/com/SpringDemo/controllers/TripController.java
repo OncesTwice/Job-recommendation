@@ -158,27 +158,35 @@ public class TripController {
     }
 //
 //    /* ---------------- DELETE USER ------------------------ */
-//    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<String> deleteUserById(@PathVariable int id) {
-//        Users user = mapUser.get(id);
-//        if (user == null) {
-//            return new ResponseEntity<String>("Not Found User", HttpStatus.OK);
-//        }
-//
-//        mapUser.remove(id);
-//        return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
-//    }
-//
+
+    @RequestMapping(value = "/trips/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteUserById(@PathVariable int id) {
+        System.out.println(id);
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+        session.createNativeQuery("DELETE * FROM trips WHERE id = ?")
+                .setParameter(1, id)
+                .executeUpdate();
+
+        tx.commit();
+        return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
+    }
+
 //    /* ---------------- UPDATE USER ------------------------ */
-//    @RequestMapping(value = "/users", method = RequestMethod.PUT)
-//    public ResponseEntity<String> updateUser(@RequestBody Users user) {
-//        Users oldUser = mapUser.get(user.getId());
-//        if (oldUser == null) {
-//            return new ResponseEntity<String>("Not Found User", HttpStatus.NO_CONTENT);
-//        }
-//
-//        // replace old user by new user.
-//        mapUser.put(user.getId(), user);
-//        return new ResponseEntity<String>("Updated!", HttpStatus.OK);
-//    }
+
+    @RequestMapping(value = "/trips/update", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateUser(@RequestBody Trips trip) {
+        System.out.println(trip.getId());
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+        session.createNativeQuery("UPDATE trips SET name=?,start_location = ?, end_location=? WHERE id = ?")
+                .setParameter(1, "1")
+                .setParameter(2, "1")
+                .setParameter(3, "1")
+                .setParameter(4, trip.getId())
+                .executeUpdate();
+
+        tx.commit();
+        return new ResponseEntity<String>("Updated!", HttpStatus.OK);
+    }
 }
