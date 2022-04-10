@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -54,11 +55,13 @@ public class SystemController {
 //    Query q = session.createNativeQuery("SELECT * FROM Users");
     /* ---------------- CREATE NEW USER ------------------------ */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<String> createUser(@RequestBody Users user) {
+    public ResponseEntity<Map<String, String>> createUser(@RequestBody Users user) {
         System.out.println("123 " + user.getFirstname());
         System.out.println("123 " + user.getLastname());
         System.out.println("123 " + user.getEmail());
         System.out.println("123 " + user.getPassword());
+
+        Map<String, String> res = new HashMap<>();
         // check input
 //        String a = user.getFirstname();
 //        if (a.length() < 5) {
@@ -82,14 +85,15 @@ public class SystemController {
         List<Users> qEmailResult = qEmail.getResultList();
 
         if (qEmailResult.size() > 0) {
-            return new ResponseEntity<String>("Email registered", HttpStatus.CONFLICT);
+            res.put("message", "Email exist");
+            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         }
 
         // check main
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         System.out.println(dtf.format(now));
-        
+
         Date date = new Date();
         try {
             Transaction tx = session.beginTransaction();
@@ -107,6 +111,8 @@ public class SystemController {
             tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            res.put("message", "fail");
+            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         } finally {
             session.close();
         }
@@ -115,31 +121,63 @@ public class SystemController {
 //        if (mapUser.containsKey(user.getId())) {
 //            return new ResponseEntity<String>("User Already Exist!", HttpStatus.CONFLICT);
 //        }
-        mapUser.put(user.getId(), user);
-        return new ResponseEntity<String>("Created!", HttpStatus.CREATED);
+//        mapUser.put(user.getId(), user);
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 
     /* ---------------- Login ------------------------ */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<String> login(@RequestBody Users user) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody Users user) {
         System.out.println("123" + user.getEmail());
         System.out.println("123" + user.getPassword());
 
-        return new ResponseEntity<String>("Created!", HttpStatus.CREATED);
+        Map<String, String> res = new HashMap<>();
+
+        // checkdb
+        Session session = sessionFactory.getObject().openSession();
+
+        Query qEmail = session.createNamedQuery("Users.findByEmail");
+        qEmail.setParameter("email", user.getEmail());
+        List<Users> qEmailResult = qEmail.getResultList();
+
+        if (qEmailResult.size() == 0) {
+            res.put("message", "Email not Found");
+            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+        }
+
+        for (Users obj : qEmailResult) {
+            if (!obj.getPassword().equals(user.getPassword())) {
+                res.put("message", "Password not match");
+                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+            }
+        }
+        // check main
+        session.close();
+
+        // res
+//        mapUser.put(user.getId(), user);
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 
 
     /* ---------------- UPDATE USER ------------------------ */
     @RequestMapping(value = "/forgot", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateUser(@RequestBody Users user) {
+    @SuppressWarnings("empty-statement")
+    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Users user) {
+        Map<String, String> res = new HashMap<>();
         Users oldUser = mapUser.get(user.getId());
         if (oldUser == null) {
-            return new ResponseEntity<String>("Not Found User", HttpStatus.NO_CONTENT);
+
+            res.put("message", "fail");
+            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         }
 
         // replace old user by new user.
-        mapUser.put(user.getId(), user);
-        return new ResponseEntity<String>("Updated!", HttpStatus.OK);
+//        mapUser.put(user.getId(), user);
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 }
 
