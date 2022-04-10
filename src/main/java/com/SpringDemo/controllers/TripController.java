@@ -160,22 +160,25 @@ public class TripController {
 //    /* ---------------- DELETE USER ------------------------ */
 
     @RequestMapping(value = "/trips/delete/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteUserById(@PathVariable int id) {
+    public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
         System.out.println(id);
         Session session = sessionFactory.getObject().openSession();
         Transaction tx = session.beginTransaction();
-        session.createNativeQuery("DELETE * FROM trips WHERE id = ?")
+        session.createNativeQuery("DELETE FROM trips WHERE id = ?")
                 .setParameter(1, id)
                 .executeUpdate();
 
         tx.commit();
-        return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
+        
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 
 //    /* ---------------- UPDATE USER ------------------------ */
 
     @RequestMapping(value = "/trips/update", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateUser(@RequestBody Trips trip) {
+    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Trips trip) {
         System.out.println(trip.getId());
         Session session = sessionFactory.getObject().openSession();
         Transaction tx = session.beginTransaction();
@@ -187,6 +190,9 @@ public class TripController {
                 .executeUpdate();
 
         tx.commit();
-        return new ResponseEntity<String>("Updated!", HttpStatus.OK);
+        
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 }
