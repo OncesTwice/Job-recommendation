@@ -21,23 +21,9 @@
     </head>
     <body>
         <!-- NAVBAR -->
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <!-- Brand -->
-            <a class="navbar-brand" href="/">WeddingNow</a>
-
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- FOOTER -->
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1>Bootstrap Tutorial</h1>
-                    <p>Bootstrap is the most popular HTML, CSS... ${name}</p>
-                </div>
-            </div>
-        </nav>
+        <div class="a"></div>
+        <form></form>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
             const testAPI = async  () => {

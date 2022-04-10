@@ -20,7 +20,12 @@ public class BaseControler {
 
     @RequestMapping("/")
     public String index() {
-        return "index";
+        return "login";
+    }
+    
+    @RequestMapping("/signin")
+    public String signin() {
+        return "signin";
     }
 
     @RequestMapping("/home")

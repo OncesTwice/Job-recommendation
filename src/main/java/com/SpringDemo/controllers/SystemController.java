@@ -54,7 +54,7 @@ public class SystemController {
 //  List<Users> listCustomer2 = queryFindByName.getResultList();
 //    Query q = session.createNativeQuery("SELECT * FROM Users");
     /* ---------------- CREATE NEW USER ------------------------ */
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @RequestMapping(value = "/register", method = RequestMethod.POST, headers = "Content-Type: application/json")
     public ResponseEntity<Map<String, String>> createUser(@RequestBody Users user) {
         System.out.println("123 " + user.getFirstname());
         System.out.println("123 " + user.getLastname());
@@ -128,11 +128,11 @@ public class SystemController {
 
     /* ---------------- Login ------------------------ */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, String>> login(@RequestBody Users user) {
+    public ResponseEntity<Map<String, List<Users>>> login(@RequestBody Users user) {
         System.out.println("123" + user.getEmail());
         System.out.println("123" + user.getPassword());
 
-        Map<String, String> res = new HashMap<>();
+        Map<String, List<Users>> res = new HashMap<>();
 
         // checkdb
         Session session = sessionFactory.getObject().openSession();
@@ -142,23 +142,22 @@ public class SystemController {
         List<Users> qEmailResult = qEmail.getResultList();
 
         if (qEmailResult.size() == 0) {
-            res.put("message", "Email not Found");
-            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+//            res.put("message", "Email not Found");
+//            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         }
 
         for (Users obj : qEmailResult) {
             if (!obj.getPassword().equals(user.getPassword())) {
-                res.put("message", "Password not match");
-                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+//                res.put("message", "Password not match");
+//                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
             }
         }
         // check main
-        session.close();
 
         // res
 //        mapUser.put(user.getId(), user);
-        res.put("message", "success");
-        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+        res.put("message", qEmailResult);
+        return new ResponseEntity<Map<String, List<Users>>>(res, HttpStatus.OK);
     }
 
 
