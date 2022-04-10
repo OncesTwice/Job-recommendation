@@ -6,6 +6,7 @@ com\SpringDemo\pojo\Orders_.class
 com\SpringDemo\controllers\SystemController.class
 com\SpringDemo\pojo\Buses.class
 com\SpringDemo\config\WebAppContextConfig.class
+com\SpringDemo\controllers\OrderController.class
 com\SpringDemo\controllers\BaseControler.class
 com\SpringDemo\config\DispatcherServletInit.class
 com\SpringDemo\pojo\Trips_.class

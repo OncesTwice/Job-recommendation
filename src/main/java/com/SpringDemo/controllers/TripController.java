@@ -169,28 +169,29 @@ public class TripController {
                 .executeUpdate();
 
         tx.commit();
-        
+
         Map<String, String> res = new HashMap<>();
         res.put("message", "success");
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 
 //    /* ---------------- UPDATE USER ------------------------ */
-
     @RequestMapping(value = "/trips/update", method = RequestMethod.PUT)
     public ResponseEntity<Map<String, String>> updateUser(@RequestBody Trips trip) {
         System.out.println(trip.getId());
+        Date date = new Date();
         Session session = sessionFactory.getObject().openSession();
         Transaction tx = session.beginTransaction();
-        session.createNativeQuery("UPDATE trips SET name=?,start_location = ?, end_location=? WHERE id = ?")
-                .setParameter(1, "1")
-                .setParameter(2, "1")
-                .setParameter(3, "1")
-                .setParameter(4, trip.getId())
+        session.createNativeQuery("UPDATE trips SET name=?,start_location = ?, end_location=?,updated_at=? WHERE id = ?")
+                .setParameter(1, trip.getName())
+                .setParameter(2, trip.getStartLocation())
+                .setParameter(3, trip.getEndLocation())
+                .setParameter(4, date)
+                .setParameter(5, trip.getId())
                 .executeUpdate();
 
         tx.commit();
-        
+
         Map<String, String> res = new HashMap<>();
         res.put("message", "success");
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
