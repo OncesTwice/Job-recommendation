@@ -9,6 +9,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,7 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,13 +34,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orders.findByPrice", query = "SELECT o FROM Orders o WHERE o.price = :price"),
     @NamedQuery(name = "Orders.findByCreatedAt", query = "SELECT o FROM Orders o WHERE o.createdAt = :createdAt"),
     @NamedQuery(name = "Orders.findByUpdatedAt", query = "SELECT o FROM Orders o WHERE o.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Orders.findByTicketId", query = "SELECT o FROM Orders o WHERE o.ticketId = :ticketId")})
+    @NamedQuery(name = "Orders.findByBusId", query = "SELECT o FROM Orders o WHERE o.busId = :busId")})
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "id")
     private Integer id;
     @Column(name = "price")
@@ -50,11 +51,8 @@ public class Orders implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
-    @Column(name = "ticket_id")
-    private Integer ticketId;
-    @JoinColumn(name = "buses", referencedColumnName = "id")
-    @ManyToOne
-    private Buses buses;
+    @Column(name = "bus_id")
+    private Integer busId;
     @JoinColumn(name = "trip_id", referencedColumnName = "id")
     @ManyToOne
     private Trips tripId;
@@ -101,20 +99,12 @@ public class Orders implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getTicketId() {
-        return ticketId;
+    public Integer getBusId() {
+        return busId;
     }
 
-    public void setTicketId(Integer ticketId) {
-        this.ticketId = ticketId;
-    }
-
-    public Buses getBuses() {
-        return buses;
-    }
-
-    public void setBuses(Buses buses) {
-        this.buses = buses;
+    public void setBusId(Integer busId) {
+        this.busId = busId;
     }
 
     public Trips getTripId() {
