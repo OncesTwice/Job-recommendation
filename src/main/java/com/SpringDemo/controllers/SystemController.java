@@ -7,6 +7,9 @@ package com.SpringDemo.controllers;
 //import com.SpringDemo.pojo.User;
 import com.SpringDemo.pojo.Users;
 import com.cloudinary.Cloudinary;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,13 +86,22 @@ public class SystemController {
         }
 
         // check main
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+        
+        Date date = new Date();
         try {
             Transaction tx = session.beginTransaction();
             Users u = new Users();
             u.setFirstname(user.getFirstname());
-            u.setLastname(user.getFirstname());
-            u.setEmail(user.getFirstname());
-            u.setPassword(user.getFirstname());
+            u.setLastname(user.getLastname());
+            u.setEmail(user.getEmail());
+            u.setPassword(user.getPassword());
+            u.setRole("customer");
+            u.setCreatedAt(date);
+            u.setUpdatedAt(date);
+
             session.save(u);
             System.out.println("Successfully data insert in database");
             tx.commit();
@@ -110,11 +122,9 @@ public class SystemController {
     /* ---------------- Login ------------------------ */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<String> login(@RequestBody Users user) {
-        System.out.println("123" + user.getFirstname());
-        if (mapUser.containsKey(user.getId())) {
-            return new ResponseEntity<String>("User Already Exist!", HttpStatus.CONFLICT);
-        }
-        mapUser.put(user.getId(), user);
+        System.out.println("123" + user.getEmail());
+        System.out.println("123" + user.getPassword());
+
         return new ResponseEntity<String>("Created!", HttpStatus.CREATED);
     }
 
