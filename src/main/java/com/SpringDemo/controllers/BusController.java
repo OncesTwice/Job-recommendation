@@ -47,16 +47,16 @@ public class BusController {
     public static HashMap<Integer, Users> mapUser = new HashMap<Integer, Users>();
     public static Map<String, List<Buses>> res = new HashMap<>();
 
-    @RequestMapping(value = "/buses/all", method = RequestMethod.GET)
+    @RequestMapping(value = "buses/all", method = RequestMethod.GET)
     public ResponseEntity<Map<String, List<Buses>>> getAllBus() {
 
         Session session = sessionFactory.getObject().openSession();
-        Query q = session.createNamedQuery("Users.findAll");
-        List<Buses> listBus = q.getResultList();
+        Query q = session.createNamedQuery("Trips.findAll");
+        List<Buses> listTrip = q.getResultList();
 
 //        session.close();
 //        res.put("", "success");
-        res.put("data", listBus);
+        res.put("data", listTrip);
 
         return new ResponseEntity<Map<String, List<Buses>>>(res, HttpStatus.OK);
     }

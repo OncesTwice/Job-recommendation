@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -34,6 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Orders.findByPrice", query = "SELECT o FROM Orders o WHERE o.price = :price"),
     @NamedQuery(name = "Orders.findByCreatedAt", query = "SELECT o FROM Orders o WHERE o.createdAt = :createdAt"),
     @NamedQuery(name = "Orders.findByUpdatedAt", query = "SELECT o FROM Orders o WHERE o.updatedAt = :updatedAt"),
+    @NamedQuery(name = "Orders.findByTripId", query = "SELECT o FROM Orders o WHERE o.tripId = :tripId"),
+    @NamedQuery(name = "Orders.findByUserId", query = "SELECT o FROM Orders o WHERE o.userId = :userId"),
     @NamedQuery(name = "Orders.findByBusId", query = "SELECT o FROM Orders o WHERE o.busId = :busId")})
 public class Orders implements Serializable {
 
@@ -51,14 +51,12 @@ public class Orders implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    @Column(name = "trip_id")
+    private Integer tripId;
+    @Column(name = "user_id")
+    private Integer userId;
     @Column(name = "bus_id")
     private Integer busId;
-    @JoinColumn(name = "trip_id", referencedColumnName = "id")
-    @ManyToOne
-    private Trips tripId;
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    @ManyToOne
-    private Users userId;
 
     public Orders() {
     }
@@ -99,28 +97,28 @@ public class Orders implements Serializable {
         this.updatedAt = updatedAt;
     }
 
+    public Integer getTripId() {
+        return tripId;
+    }
+
+    public void setTripId(Integer tripId) {
+        this.tripId = tripId;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getBusId() {
         return busId;
     }
 
     public void setBusId(Integer busId) {
         this.busId = busId;
-    }
-
-    public Trips getTripId() {
-        return tripId;
-    }
-
-    public void setTripId(Trips tripId) {
-        this.tripId = tripId;
-    }
-
-    public Users getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Users userId) {
-        this.userId = userId;
     }
 
     @Override

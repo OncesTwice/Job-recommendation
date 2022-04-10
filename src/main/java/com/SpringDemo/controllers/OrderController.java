@@ -4,10 +4,63 @@
  */
 package com.SpringDemo.controllers;
 
+import static com.SpringDemo.controllers.BusController.res;
+import com.SpringDemo.pojo.Buses;
+import com.SpringDemo.pojo.Orders;
+import com.cloudinary.Cloudinary;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  *
  * @author Kien Mason
  */
+@RestController
 public class OrderController {
-    
+
+    private EntityManager entityManager;
+
+    @Autowired
+    private Cloudinary cloudinary;
+    @Autowired
+    private LocalSessionFactoryBean sessionFactory;
+
+    public static Map<String, List<Orders>> res = new HashMap<>();
+
+    @RequestMapping(value = "orders/all", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, List<Orders>>> getAllOrder() {
+        System.out.println("11111111");
+        Session session = sessionFactory.getObject().openSession();
+
+        Query queryFindByName = session.createNamedQuery("Orders.findAll");
+        List<Orders> lisdOrder = queryFindByName.getResultList();
+
+        res.put("data", lisdOrder);
+        return new ResponseEntity<Map<String, List<Orders>>>(res, HttpStatus.OK);
+    }
+
+//    @RequestMapping(value = "/buses/all1", method = RequestMethod.GET)
+//    public ResponseEntity<Map<String, List<Buses>>> getAllBus() {
+//
+//        Session session = sessionFactory.getObject().openSession();
+//        Query q = session.createNamedQuery("Users.findAll");
+//        List<Buses> listBus = q.getResultList();
+//
+////        session.close();
+////        res.put("", "success");
+//        res.put("data", listBus);
+//
+//        return new ResponseEntity<Map<String, List<Buses>>>(res, HttpStatus.OK);
+//    }
 }
