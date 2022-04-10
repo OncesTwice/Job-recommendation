@@ -51,7 +51,7 @@ public class BusController {
     public ResponseEntity<Map<String, List<Buses>>> getAllBus() {
 
         Session session = sessionFactory.getObject().openSession();
-        Query q = session.createNamedQuery("Trips.findAll");
+        Query q = session.createNamedQuery("Buses.findAll");
         List<Buses> listTrip = q.getResultList();
 
 //        session.close();
