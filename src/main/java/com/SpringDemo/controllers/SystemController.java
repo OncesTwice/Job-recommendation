@@ -153,7 +153,9 @@ public class SystemController {
             }
         }
         // check main
-
+        for (Users obj : qEmailResult) {
+            obj.setPassword("");
+        }
         // res
 //        mapUser.put(user.getId(), user);
         res.put("message", qEmailResult);
