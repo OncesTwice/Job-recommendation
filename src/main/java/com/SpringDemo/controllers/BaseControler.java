@@ -23,9 +23,9 @@ public class BaseControler {
         return "login";
     }
     
-    @RequestMapping("/signin")
-    public String signin() {
-        return "signin";
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
     }
 
     @RequestMapping("/home")
