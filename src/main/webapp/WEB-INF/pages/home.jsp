@@ -22,6 +22,9 @@
             .grid-container {
                 display: grid;
                 grid-template-columns: 33% 33% 33%;
+                /*height: 600px;*/
+
+                                
                 padding: 10px;
             }
             .grid-item {
@@ -31,7 +34,8 @@
                 font-size: 30px;
                 text-align: center;
             }
-
+            
+            <%@ include file="/WEB-INF/css/home.css"%>
         </style>
     </head>
     <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -211,11 +215,11 @@
                             var html = `<div class='grid-item'>
                                             <img src=` + img + ` alt=` + name + `/>
                                             <div class='w3-container w3-white'>
-                                                <p style='text-align: left;'>Name: ` + name + `</p>
-                                                <p style='text-align: left;'>Start: ` + startLocation + `</p>
-                                                <p style='text-align: left;'>End: ` + endLocation + `</p>
-                                                <p style='text-align: left;'>Ticket price: ` + startLocation + `</p>
-                                                <button class='book' onclick='booking(` + id + `)'>Book</button>
+                                                <p class="trip_name">Name: ` + name + `</p>
+                                                <p class="trip_start">Start: ` + startLocation + `</p>
+                                                <p class="trip_end">End: ` + endLocation + `</p>
+                                                <p class="trip_price">Ticket price: ` + startLocation + `</p>
+                                                <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
                                             </div>
                                         </div>`
                             $("#listTrip").append(html);

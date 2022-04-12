@@ -7,6 +7,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Kien Mason
 */
 
-.trip_name{
-    font-size: 16px;
+.trip_name,.trip_start,.trip_end,.trip_price{
+    text-align: left;
+}
+
+.trip_booking{
+    background-color: orangered;
+    border-radius: 10px;
+    border: none;
+    
+    margin-bottom: 10px;
+
+    color: white;
 }
