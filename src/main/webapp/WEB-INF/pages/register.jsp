@@ -15,24 +15,56 @@
         </style>
     </head>
     <body>
-         <div class="wrapper">
-            <form class="register_form" onsubmit="register()">
+        <div class="wrapper">
+            <form class="register_form" onsubmit="register(event)">
                 <h1>Register</h1>
-                <input type="text" name="email" placeholder="Email:"/>
-                <input type="password" name="password" placeholder="Password:" />
-                <input type="text" name="firstname" placeholder="Fistname:"/>
-                <input type="text" name="lastname" placeholder="Lastname:" />
+                <h3 style="color: red;display: none;text-align: center;" id="error">Register failed</h3>
+
+                <input type="text" id="firstname" name="firstname" placeholder="Firstname:"/>
+                <input type="text" id="lastname" name="lastname" placeholder="Lastname:" />
+                <input type="text" id="email" name="email" placeholder="Email:"/>
+                <input type="password" id="pwd" name="password" placeholder="Password:" />
+
                 <button type="submit">Submit</button>
             </form>
         </div>
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
-                const register = async  () => {
-                    var res = await $.get(`http://localhost:8080/SpringDemo/api/test`)
-                    console.log(res)
+                const register = async (event) => {
+                    event.preventDefault()
+                    const email = document.getElementById("email").value
+                    const password = document.getElementById("pwd").value
+                    const firstname = document.getElementById("firstname").value
+                    const lastname = document.getElementById("lastname").value
+
+                    const _data = {
+                        email,
+                        password,
+                        firstname,
+                        lastname
+                    }
+
+                    const res = await fetch('http://localhost:8080/SpringDemo/register', {
+                        method: "POST",
+                        body: JSON.stringify(_data),
+                        headers: {"Content-type": "application/json;charset=UTF-8"}
+                    })
+                    const json = await res.json()
+
+                    console.log(json)
+
+                    if (json.message !== "success") {
+                        document.getElementById("error").innerHTML = json.message
+                        return document.getElementById("error").style.display = "";
+
+                    }
+
+                    window.location.href = "http://localhost:8080/SpringDemo/"
+
+
+
                 }
-                register()
         </script>
     </body>
 </html>

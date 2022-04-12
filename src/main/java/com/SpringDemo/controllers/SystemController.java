@@ -165,7 +165,6 @@ public class SystemController {
 
     /* ---------------- UPDATE USER ------------------------ */
     @RequestMapping(value = "/forgot", method = RequestMethod.PUT)
-    @SuppressWarnings("empty-statement")
     public ResponseEntity<Map<String, String>> updateUser(@RequestBody Users user) {
         Map<String, String> res = new HashMap<>();
         Users oldUser = mapUser.get(user.getId());
