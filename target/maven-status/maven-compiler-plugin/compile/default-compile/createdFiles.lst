@@ -13,7 +13,6 @@ com\SpringDemo\pojo\Trips_.class
 com\SpringDemo\controllers\UserController.class
 com\SpringDemo\pojo\Buses_.class
 com\SpringDemo\controllers\BusController.class
-OrderController.class
 com\SpringDemo\controllers\TripController.class
 com\SpringDemo\config\HibernateConfig.class
 com\SpringDemo\controllers\TestController.class
