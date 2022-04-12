@@ -20,7 +20,7 @@
     <body>
         <div class="wrapper">
 
-            <form id="formLogin" class="login_form" onsubmit="a(event)">            
+            <form id="formLogin" class="login_form" onsubmit="login(event)">            
                 <h1>Login</h1>
                 <h3 style="color: red;display: none;text-align: center;" id="error">Login failed</h3>
                 <input type="text" id="email" name="email" placeholder="Email:"/>
@@ -32,7 +32,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
-                const a = async (event) => {
+                const login = async (event) => {
                     event.preventDefault()
                     const email = (document.getElementById("email").value)
                     const pwd = (document.getElementById("pwd").value)
@@ -52,11 +52,13 @@
 
                     const dataJSON = await json[0];
 
-                    console.log(json.message)
+                    console.log(json.data)
 //                    console.log(dataJSON)
 
-                    if (json.message.length === 0)
+                    if (json.data.length === 0)
                         return document.getElementById("error").style.display = "";
+
+                    await localStorage.setItem("account", JSON.stringify(json.data[0]))
 
                     window.location.href = "http://localhost:8080/SpringDemo/home"
 

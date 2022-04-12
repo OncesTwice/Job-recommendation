@@ -158,7 +158,7 @@ public class SystemController {
         }
         // res
 //        mapUser.put(user.getId(), user);
-        res.put("message", qEmailResult);
+        res.put("data", qEmailResult);
         return new ResponseEntity<Map<String, List<Users>>>(res, HttpStatus.OK);
     }
 

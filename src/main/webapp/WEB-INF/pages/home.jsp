@@ -12,6 +12,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Home</h1>
+        <h1 onclick="logout()">Home</h1>
+
+        <script>
+            const logout = () => {
+                localStorage.removeItem("account")
+            }
+        </script>
     </body>
 </html>
