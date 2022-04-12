@@ -61,28 +61,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TripController {
-
-    @Autowired
-    private Cloudinary cloudinary;
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     public static Map<String, List<Trips>> res = new HashMap<>();
-
-//    @RequestMapping(value = "/users", method = RequestMethod.GET)
-//    public ResponseEntity<List<Users>> getAllUser() {
-////        List<Users> listUser = new ArrayList<Users>(mapUser.values());
-//        Session session = sessionFactory.getObject().openSession();
-////        Query q = session.createQuery("FROM Users");
-////        List<Users> users = q.getResultList();
-//        Query q = session.createNativeQuery("SELECT * FROM Users");
-//        List<Users> users = q.getResultList();
-//
-//        Query queryFindByName = session.createNamedQuery("Users.findById");
-////        queryFindByName.setParameter(1, "name");
-//        queryFindByName.setParameter("id", 3);
-//        List<Users> listCustomer2 = queryFindByName.getResultList();
-//        return new ResponseEntity<List<Users>>(listCustomer2, HttpStatus.OK);
-//    }
 
     /* ---------------- GET ALL Trip ------------------------ */
     @RequestMapping(value = "/trips/all", method = RequestMethod.GET)
@@ -100,20 +81,25 @@ public class TripController {
     }
 
     /* ---------------- GET USER BY ID ------------------------ */
-//    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-//    public ResponseEntity<Object> getUserById(@PathVariable int id) {
-//        Users user = mapUser.get(id);
-//        if (user != null) {
-//            return new ResponseEntity<Object>(user, HttpStatus.OK);
-//        }
-//
-//        return new ResponseEntity<Object>("Not Found User", HttpStatus.NO_CONTENT);
-//    }
-//
+    @RequestMapping(value = "/trips/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, List<Trips>>> getTripById(@PathVariable int id) {
+        Session session = sessionFactory.getObject().openSession();
+        Query q = session.createNamedQuery("Trips.findById");
+        q.setParameter("id", id);
+        List<Trips> listTrip = q.getResultList();
+
+//        session.close();
+//        res.put("", "success");
+        res.put("data", listTrip);
+
+        return new ResponseEntity<Map<String, List<Trips>>>(res, HttpStatus.OK);
+    }
+
 //    /* ---------------- CREATE NEW USER ------------------------ */
     @RequestMapping(value = "/trips/create", method = RequestMethod.POST)
     public ResponseEntity<Map<String, String>> createTrip(@RequestBody Trips trip) {
         System.out.println("123 " + trip.getName());
+        System.out.println("123 " + trip.getPrice());
         System.out.println("123 " + trip.getStartLocation());
         System.out.println("123 " + trip.getEndLocation());
 
@@ -137,6 +123,8 @@ public class TripController {
             Transaction tx = session.beginTransaction();
             Trips u = new Trips();
             u.setName(trip.getName());
+            u.setPrice(trip.getPrice());
+            u.setImage("https://www.smartdatajob.com/images/joomlart/demo/default.jpg");
             u.setStartLocation(trip.getStartLocation());
             u.setEndLocation(trip.getEndLocation());
             u.setCreatedAt(date);
@@ -197,3 +185,21 @@ public class TripController {
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 }
+
+
+//    @RequestMapping(value = "/users", method = RequestMethod.GET)
+//    public ResponseEntity<List<Users>> getAllUser() {
+////        List<Users> listUser = new ArrayList<Users>(mapUser.values());
+//        Session session = sessionFactory.getObject().openSession();
+////        Query q = session.createQuery("FROM Users");
+////        List<Users> users = q.getResultList();
+//        Query q = session.createNativeQuery("SELECT * FROM Users");
+//        List<Users> users = q.getResultList();
+//
+//        Query queryFindByName = session.createNamedQuery("Users.findById");
+////        queryFindByName.setParameter(1, "name");
+//        queryFindByName.setParameter("id", 3);
+//        List<Users> listCustomer2 = queryFindByName.getResultList();
+//        return new ResponseEntity<List<Users>>(listCustomer2, HttpStatus.OK);
+//    }
+

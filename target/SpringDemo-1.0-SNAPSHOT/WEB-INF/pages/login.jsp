@@ -37,7 +37,6 @@
                     const email = (document.getElementById("email").value)
                     const pwd = (document.getElementById("pwd").value)
 
-                    alert(email + pwd)
                     const _data = {
                         "email": document.getElementById("email").value,
                         "password": document.getElementById("pwd").value
