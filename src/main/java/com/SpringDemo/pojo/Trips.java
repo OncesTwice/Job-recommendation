@@ -31,10 +31,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Trips.findAll", query = "SELECT t FROM Trips t"),
     @NamedQuery(name = "Trips.findById", query = "SELECT t FROM Trips t WHERE t.id = :id"),
     @NamedQuery(name = "Trips.findByName", query = "SELECT t FROM Trips t WHERE t.name = :name"),
+    @NamedQuery(name = "Trips.findByPrice", query = "SELECT t FROM Trips t WHERE t.price = :price"),
     @NamedQuery(name = "Trips.findByStartLocation", query = "SELECT t FROM Trips t WHERE t.startLocation = :startLocation"),
     @NamedQuery(name = "Trips.findByEndLocation", query = "SELECT t FROM Trips t WHERE t.endLocation = :endLocation"),
     @NamedQuery(name = "Trips.findByCreatedAt", query = "SELECT t FROM Trips t WHERE t.createdAt = :createdAt"),
-    @NamedQuery(name = "Trips.findByUpdatedAt", query = "SELECT t FROM Trips t WHERE t.updatedAt = :updatedAt")})
+    @NamedQuery(name = "Trips.findByUpdatedAt", query = "SELECT t FROM Trips t WHERE t.updatedAt = :updatedAt"),
+    @NamedQuery(name = "Trips.findByImg", query = "SELECT t FROM Trips t WHERE t.img = :img")})
 public class Trips implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +48,8 @@ public class Trips implements Serializable {
     @Size(max = 255)
     @Column(name = "name")
     private String name;
+    @Column(name = "price")
+    private Long price;
     @Size(max = 255)
     @Column(name = "start_location")
     private String startLocation;
@@ -58,6 +62,9 @@ public class Trips implements Serializable {
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+    @Size(max = 255)
+    @Column(name = "img")
+    private String img;
 
     public Trips() {
     }
@@ -80,6 +87,14 @@ public class Trips implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public String getStartLocation() {
@@ -112,6 +127,14 @@ public class Trips implements Serializable {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     @Override

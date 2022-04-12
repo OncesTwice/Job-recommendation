@@ -124,7 +124,7 @@ public class TripController {
             Trips u = new Trips();
             u.setName(trip.getName());
             u.setPrice(trip.getPrice());
-            u.setImage("https://www.smartdatajob.com/images/joomlart/demo/default.jpg");
+            u.setImg("https://www.smartdatajob.com/images/joomlart/demo/default.jpg");
             u.setStartLocation(trip.getStartLocation());
             u.setEndLocation(trip.getEndLocation());
             u.setCreatedAt(date);
