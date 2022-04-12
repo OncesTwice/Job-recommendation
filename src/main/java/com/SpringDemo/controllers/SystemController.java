@@ -54,7 +54,7 @@ public class SystemController {
 //  List<Users> listCustomer2 = queryFindByName.getResultList();
 //    Query q = session.createNativeQuery("SELECT * FROM Users");
     /* ---------------- CREATE NEW USER ------------------------ */
-    @RequestMapping(value = "/register", method = RequestMethod.POST, headers = "Content-Type: application/json")
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<Map<String, String>> createUser(@RequestBody Users user) {
         System.out.println("123 " + user.getFirstname());
         System.out.println("123 " + user.getLastname());
