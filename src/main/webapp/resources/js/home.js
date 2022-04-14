@@ -79,12 +79,12 @@ const getTrips = async () => {
                                                             <h4 class="modal-title">Edit Form</h4>
                                                         </div>
                                                         <form id="editForm${index}"  class="modal-body" enctype="multipart/form-data">
-                                                            <input type="text" name ="trip_id" disabled value='${id}'/>
-                                                            <input type="text" name ="trip_name" placeholder="Trip Name:"/>
-                                                            <input type="text" name ="trip_price" placeholder="Trip Price:"/>
-                                                            <input type="text" name ="trip_startLocation" placeholder="Trip Start Location:"/>
-                                                            <input type="text" name ="trip_endLocation" placeholder="Trip End Location:"/>
-                                                            <button type="submit" onclick="editing(event,'${index}','${id}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                                                            <input class="trip_input" type="text" name ="trip_id" disabled value='${id}'/>
+                                                            <input class="trip_input" type="text" name ="trip_name" placeholder="Trip Name:"/>
+                                                            <input class="trip_input" type="text" name ="trip_price" placeholder="Trip Price:"/>
+                                                            <input class="trip_input" type="text" name ="trip_startLocation" placeholder="Trip Start Location:"/>
+                                                            <input class="trip_input" type="text" name ="trip_endLocation" placeholder="Trip End Location:"/>
+                                                            <button class="trip_button" type="submit" onclick="editing(event,'${index}','${id}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
                                                         </form>
                                                         
                                                       </div>

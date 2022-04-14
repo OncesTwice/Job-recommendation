@@ -106,4 +106,38 @@ body,h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
 }
 
+.trip_input{
+    display: block;
+
+    width: 90%;
+    height: 40px;
+    background-color: silver;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+
+    margin: auto;
+    margin-bottom:10px;
+    
+    font-size: 18px;
+
+    padding-left: 15px;
+}
+.trip_button{
+    display: block;
+
+    width: 120px;
+    height: 40px;
+    background-color: orangered;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+
+    margin: auto;
+    margin-bottom:10px;
+    
+    color: white;
+    font-size: 18px;
+}
+
 
