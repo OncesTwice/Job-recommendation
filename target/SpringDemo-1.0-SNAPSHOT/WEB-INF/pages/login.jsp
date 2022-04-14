@@ -39,7 +39,7 @@
 //                    window.location.href = "http://localhost:8080/SpringDemo/dashboard"
 //                if (account.role === "customer")
 //                    window.location.href = "http://localhost:8080/SpringDemo/"
-                
+
                 const login = async (event) => {
                     event.preventDefault()
                     const email = (document.getElementById("email").value)
@@ -74,7 +74,13 @@
 
                     await localStorage.setItem("account", JSON.stringify(json.data[0]))
                     Alert({success: "Login success!"})
-                    window.location.href = "http://localhost:8080/SpringDemo/home"
+
+                    if (json.data[0].role === "customer") 
+                        window.location.href = "http://localhost:8080/SpringDemo/home"
+
+                    if (json.data[0].role === "employee" || json.data[0].role === "admin" || json.data[0].role === "manager")
+                        window.location.href = "http://localhost:8080/SpringDemo/dashboard"
+
 
                 }
 
