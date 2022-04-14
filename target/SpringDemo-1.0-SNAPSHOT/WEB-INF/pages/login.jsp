@@ -32,6 +32,8 @@
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="resources/js/alert.js"></script>
         <script>
                 const login = async (event) => {
                     event.preventDefault()
@@ -55,8 +57,10 @@
                     console.log(json.data)
 //                    console.log(dataJSON)
 
-                    if (json.data.length === 0)
+                    if (json.data.length === 0) {
+                        Alert({error: "Login error!"})
                         return document.getElementById("error").style.display = "";
+                    }
 
                     await localStorage.setItem("account", JSON.stringify(json.data[0]))
                     Alert({success: "Login success!"})

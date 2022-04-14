@@ -40,6 +40,15 @@
                     const firstname = document.getElementById("firstname").value
                     const lastname = document.getElementById("lastname").value
 
+                    if (!email || email.length < 5)
+                        return Alert({error: `Register Fail : Input not valid!`})
+                    if (!password || password.length < 5)
+                        return Alert({error: `Register Fail : Input not valid!`})
+                    if (!firstname || firstname.length < 4)
+                        return Alert({error: `Register Fail : Input not valid!`})
+                    if (!lastname || lastname.length < 4)
+                        return Alert({error: `Register Fail : Input not valid!`})
+
                     const _data = {
                         email,
                         password,
@@ -57,6 +66,7 @@
                     console.log(json)
 
                     if (json.message !== "success") {
+                        Alert({error: `Login Fail : ${json.message}!`})
                         document.getElementById("error").innerHTML = json.message
                         return document.getElementById("error").style.display = "";
 
