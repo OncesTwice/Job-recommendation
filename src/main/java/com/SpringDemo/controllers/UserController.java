@@ -86,6 +86,9 @@ public class UserController {
 
 //        session.close();
 //        res.put("", "success");
+        for (Users obj : listUser) {
+            obj.setPassword("");
+        }
         res.put("data", listUser);
 
         return new ResponseEntity<Map<String, List<Users>>>(res, HttpStatus.OK);
@@ -168,6 +171,7 @@ public class UserController {
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 //
+
     /* ---------------- DELETE USER ------------------------ */
     @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
@@ -186,6 +190,7 @@ public class UserController {
     }
 //
 //    /* ---------------- UPDATE USER ------------------------ */
+
     @RequestMapping(value = "/users/update", method = RequestMethod.PUT)
     public ResponseEntity<Map<String, String>> updateUser(@RequestBody Users user) {
         System.out.println(user.getId());

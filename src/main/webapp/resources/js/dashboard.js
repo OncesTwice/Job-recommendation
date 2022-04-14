@@ -94,5 +94,34 @@ const editing = async (event, index, id) => {
 
 }
 
+const getUsers = async () => {
+    const res = await fetch(`http://localhost:8080/SpringDemo/users/all`, {
+        method: "GET",
+//                        body: JSON.stringify(_data),
+//                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const json = await res.json()
 
+    console.log(json)
+
+
+    $("#listUser").html(``);
+
+    await $.each(json.data, (index, value) => {
+        const {id, firstname, lastname, email, updatedAt, role, createdAt} = value
+
+        var html = `<tr>
+                        <th scope="row"> ${id} </th>
+                        <td>${firstname}</td>
+                        <td>${lastname}</td>
+                        <td>${email}</td>             
+                        <td>${role}</td>
+                        <td>${createdAt}</td>
+                        <td>${updatedAt}</td>
+                    </tr>`
+        $("#listUser").prepend(html);
+    });
+}
+
+getUsers()
 

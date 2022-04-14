@@ -85,10 +85,13 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">ID Ticket</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Bus number</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Firstname</th>
+                            <th scope="col">Lastname</th>
+                            <th scope="col">Email</th>   
+                            <th scope="col">Role</th>
+                            <th scope="col">Created_at</th>
+                            <th scope="col">Updated_at</th>
                         </tr>
                     </thead>
                     <tbody id="listUser">
