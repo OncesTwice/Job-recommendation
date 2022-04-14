@@ -27,11 +27,11 @@
                 </a>
                 <img src="resources/images/logo.png" style="width:45%;" class="w3-round"><br><br>
                 <h4><b>Traveloka</b></h4>
-                <p class="w3-text-grey">Drawer</p>
+                <p class="w3-text-grey" id="account_name">Drawer</p>
             </div>
             <div class="w3-bar-block">
                 <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
-                <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a> 
+                <!--<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a>--> 
                 <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Orders</a> 
                 <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
                 <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
@@ -168,6 +168,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script>
+                    document.getElementById("account_name").innerHTML = `Hello `+JSON.parse(localStorage.getItem("account")).firstname
 //                    const account = JSON.parse(localStorage.getItem("account"));
 ////                    Alert({message: account.role})
 //                    if (!account) window.location.href="/"  
@@ -199,9 +200,9 @@
 
                         await $.each(json.data, (index, value) => {
                             const {id, img, price, name, startLocation, endLocation} = value
-                            
+
                             var html = `<div class='grid-item'>
-                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + img + `/>
+                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
                                             <div class='w3-container w3-white trip_frame'>
                                                 <p class="trip_name">` + name + `</p>
                                                 <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
