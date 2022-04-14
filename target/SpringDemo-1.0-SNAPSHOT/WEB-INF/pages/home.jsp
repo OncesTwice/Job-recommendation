@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="resources/css/home.css"/>
     </head>
-    
+
     <body class="w3-light-grey w3-content" style="max-width:1600px">
 
         <!-- Sidebar/menu -->
@@ -26,11 +26,13 @@
                     <i class="fa fa-remove"></i>
                 </a>
                 <img src="resources/images/logo.png" style="width:45%;" class="w3-round"><br><br>
-                <h4><b>PORTFOLIO</b></h4>
-                <p class="w3-text-grey">Template by W3.CSS</p>
+                <h4><b>Traveloka</b></h4>
+                <p class="w3-text-grey">Drawer</p>
             </div>
             <div class="w3-bar-block">
-                <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PORTFOLIO</a> 
+                <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
+                <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a> 
+                <a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Orders</a> 
                 <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
                 <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
             </div>
@@ -52,16 +54,16 @@
 
             <!-- Header -->
             <header id="portfolio">
-                <a href="#"><img src="/WEB-INF/img/logo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+                <a href="#"><img src="resources/images/logo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
                 <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
                 <div class="w3-container">
                     <h1><b>My Portfolio</b></h1>
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span> 
                         <button class="w3-button w3-black">ALL</button>
-                        <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-                        <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
+                        <!--                        <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
+                                                <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
+                                                <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>-->
                     </div>
                 </div>
             </header>
@@ -74,7 +76,7 @@
 
 
             <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-                <h4><b>About Us</b></h4>
+                <h4 id="about"><b>About Us</b></h4>
                 <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
                 <hr>
 
@@ -124,14 +126,14 @@
                     <div class="w3-third">
                         <h3>FOOTER</h3>
                         <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-                        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                        <p>Powered by <a href="resources/images/logo.png" target="_blank">w3.css</a></p>
                     </div>
 
                     <div class="w3-third">
                         <h3>BLOG POSTS</h3>
                         <ul class="w3-ul w3-hoverable">
                             <li class="w3-padding-16">
-                                <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+                                <img src="resources/images/logo.png" class="w3-left w3-margin-right" style="width:50px">
                                 <span class="w3-large">Lorem</span><br>
                                 <span>Sed mattis nunc</span>
                             </li>
