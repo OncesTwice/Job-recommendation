@@ -69,15 +69,15 @@ const getTickets = async () => {
     $("#listTicket").html(``);
 
     await $.each(json.data, (index, value) => {
-        const {id, price, tripId} = value
+        const {id, priceThisTime, nameThisTime} = value
 
         var html = `<tr>
-                                                    <th scope="row">` + id + `</th>
-                                                    <td>` + `` + `</td>
-                                                    <td>` + price + `</td>
-                                                    <td>` + 1 + `</td>
-                                                </tr>`
-        $("#listTicket").append(html);
+                        <th scope="row"> ${id} </th>
+                        <td>${nameThisTime}</td>
+                        <td>${priceThisTime}</td>
+                        <td>` + 1 + `</td>
+                    </tr>`
+        $("#listTicket").prepend(html);
     });
 }
 
@@ -98,8 +98,6 @@ const booking = async  (id, name, price) => {
     if (!result.isConfirmed)
         return
 
-    Alert({success: "Deleled"})
-
     const _data = {
         "priceThisTime": price,
         "nameThisTime": name,
@@ -115,7 +113,11 @@ const booking = async  (id, name, price) => {
     })
     const json = await res.json()
 
+    Alert({success: "Success"})
+    window.location.reload();
     console.log(json)
+
+
 
 
 }
@@ -141,15 +143,15 @@ const search = async (event) => {
         const {id, img, price, name, startLocation, endLocation} = value
 
         var html = `<div class='grid-item'>
-                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
-                                            <div class='w3-container w3-white trip_frame'>
-                                                <p class="trip_name">` + name + `</p>
-                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
-                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
-                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-                                                <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
-                                            </div>
-                                        </div>`
+                        <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
+                        <div class='w3-container w3-white trip_frame'>
+                        <p class="trip_name">` + name + `</p>
+                        <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
+                        <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
+                        <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
+                        <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
+                        </div>
+                    </div>`
         $("#listTrip").append(html);
     });
 }

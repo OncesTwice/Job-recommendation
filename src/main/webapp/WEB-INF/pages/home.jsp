@@ -83,9 +83,9 @@
                     <thead>
                         <tr>
                             <th scope="col">ID Ticket</th>
+                            <th scope="col">Name</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Time</th>
-                            <th scope="col">Trip</th>
+                            <th scope="col">Bus number</th>
                         </tr>
                     </thead>
                     <tbody id="listTicket">
