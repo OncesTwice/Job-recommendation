@@ -36,10 +36,11 @@ const getTrips = async () => {
 
     $("#listTrip").html(``);
 
-    await $.each(json.data, (index, value) => {
-        const {id, img, price, name, startLocation, endLocation} = value
+    if (account.role === "customer")
+        return await $.each(json.data, (index, value) => {
+            const {id, img, price, name, startLocation, endLocation} = value
 
-        var html = `<div class='grid-item'>
+            var html = `<div class='grid-item'>
                                             <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
                                             <div class='w3-container w3-white trip_frame'>
                                                 <p class="trip_name">` + name + `</p>
@@ -47,10 +48,31 @@ const getTrips = async () => {
                                                 <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
                                                 <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
                                                 <button class='trip_booking' onclick="booking('${id}','${name}','${price}')">Book</button>
+                                                
                                             </div>
                                         </div>`
-        $("#listTrip").append(html);
-    });
+            $("#listTrip").append(html);
+        });
+
+    if (account.role === "manager" || account.role === "admin" || account.role === "employee")
+        return await $.each(json.data, (index, value) => {
+            const {id, img, price, name, startLocation, endLocation} = value
+
+            var html = `<div class='grid-item'>
+                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
+                                            <div class='w3-container w3-white trip_frame'>
+                                                <p class="trip_name">` + name + `</p>
+                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
+                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
+                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
+                                                <button class='trip_booking trip_edit' onclick="Editing('${id}','${name}','${price}')">Edit</button>
+                                                <button class='trip_booking trip_delete' onclick="Deleting('${id}','${name}','${price}')">Delete</button>
+                                            </div>
+                                        </div>`
+            $("#listTrip").append(html);
+        });
+
+
 }
 
 getTrips()
@@ -157,7 +179,7 @@ const search = async (event) => {
 }
 
 
-const logout =async () => {
+const logout = async () => {
     const result = await Swal.fire({
         title: 'Are you sure?',
         text: "...to logout?",

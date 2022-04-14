@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="resources/css/home.css"/>
+        <link rel="stylesheet" href="resources/css/dashboard.css"/>
     </head>
 
     <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -27,7 +28,7 @@
                     <i class="fa fa-remove"></i>
                 </a>
                 <img src="resources/images/logo.png" style="width:45%;" class="w3-round"><br><br>
-                <h4><b>Traveloka</b></h4>
+                <h4><b>Dashboard</b></h4>
                 <p class="w3-text-grey" id="account_name">Drawer</p>
             </div>
             <div class="w3-bar-block">
@@ -193,6 +194,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script src="resources/js/home.js"></script>
+        <script src="resources/js/dashboard.js"></script>
 
     </body>
 </html>
