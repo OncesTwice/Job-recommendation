@@ -40,6 +40,11 @@
                     const email = (document.getElementById("email").value)
                     const pwd = (document.getElementById("pwd").value)
 
+                    if (!email || email.length < 5)
+                        return Alert({error: `Login Fail : Input not valid!`})
+                    if (!password || password.length < 5)
+                        return Alert({error: `Login Fail : Input not valid!`})
+
                     const _data = {
                         "email": document.getElementById("email").value,
                         "password": document.getElementById("pwd").value
