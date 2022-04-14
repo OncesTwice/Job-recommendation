@@ -33,10 +33,12 @@
             <div class="w3-bar-block">
                 <a href="#trip" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
                 <!--<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a>--> 
-                <a href="#ticket" id="drawer_link" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Tickets</a> 
+                <a href="#ticket" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Tickets</a> 
                 <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
                 <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
+                
             </div>
+            <button class="btn_logout" type="button" onclick="logout()">Log out</button>
             <div class="w3-panel w3-large">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
                 <i class="fa fa-instagram w3-hover-opacity"></i>
