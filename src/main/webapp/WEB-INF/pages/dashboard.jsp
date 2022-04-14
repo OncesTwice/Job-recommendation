@@ -130,6 +130,8 @@
             </div>
 
             <canvas id="lineChart" style="width:100%;max-width:600px"></canvas>
+            
+            <canvas id="doughnutChart" style="width:100%;max-width:600px"></canvas>
 <!--            <div class="w3-container w3-padding-large" style="margin-bottom:32px">
                 <h4 id="about"><b>Chart</b></h4>
                 <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
