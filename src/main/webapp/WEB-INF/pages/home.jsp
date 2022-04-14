@@ -56,16 +56,18 @@
             <header id="portfolio">
                 <a href="#"><img src="resources/images/logo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
                 <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-                <div class="w3-container">
+                <form class="w3-container" onsubmit="search(event)">
                     <h1><b>List Trips</b></h1>
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span> 
-                        <button class="w3-button w3-black">ALL</button>
+                        <input class="trip_filter" id="kw" type="text"/>
+                        <button type="submit" class="w3-button w3-black">Search</button>
+                        <button type="button" class="w3-button w3-black">ALL</button>
                         <!--                        <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
                                                 <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
                                                 <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>-->
                     </div>
-                </div>
+                </form>
             </header>
 
             <!-- First Photo Grid-->
@@ -168,7 +170,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script>
-                    document.getElementById("account_name").innerHTML = `Hello `+JSON.parse(localStorage.getItem("account")).firstname
+                    document.getElementById("account_name").innerHTML = `Hello ` + JSON.parse(localStorage.getItem("account")).firstname
 //                    const account = JSON.parse(localStorage.getItem("account"));
 ////                    Alert({message: account.role})
 //                    if (!account) window.location.href="/"  
@@ -221,8 +223,40 @@
                         let text = "Are you sure?";
                         if (!confirm(text + id))
                             return;
+                    }
+
+                    const search = async (event) => {
+                        event.preventDefault()
+
+                        const kw = document.getElementById("kw").value
+
+                        const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/${kw}`, {
+                            method: "GET",
+//                        body: JSON.stringify(_data),
+                            headers: {"Content-type": "application/json;charset=UTF-8"}
+                        })
+                        const json = await res.json()
+
+                        console.log(json)
 
 
+                        $("#listTrip").html(``);
+
+                        await $.each(json.data, (index, value) => {
+                            const {id, img, price, name, startLocation, endLocation} = value
+
+                            var html = `<div class='grid-item'>
+                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
+                                            <div class='w3-container w3-white trip_frame'>
+                                                <p class="trip_name">` + name + `</p>
+                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
+                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
+                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
+                                                <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
+                                            </div>
+                                        </div>`
+                            $("#listTrip").append(html);
+                        });
                     }
 
 

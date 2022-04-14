@@ -57,6 +57,18 @@ body,h1,h2,h3,h4,h5,h6 {
     color: silver;
 }
 
+.trip_filter{
+    height: 40px;
+    
+    border: none;
+    outline: none;
+    
+}
+
+.trip_filter:focus{
+    box-shadow: 0 0 2px 2px navy;
+}
+
 .trip_booking{
     background-color: orangered;
     border-radius: 10px;

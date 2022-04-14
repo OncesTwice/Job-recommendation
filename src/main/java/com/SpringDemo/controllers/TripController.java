@@ -60,6 +60,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TripController {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     public static Map<String, List<Trips>> res = new HashMap<>();
@@ -85,6 +86,20 @@ public class TripController {
         Session session = sessionFactory.getObject().openSession();
         Query q = session.createNamedQuery("Trips.findById");
         q.setParameter("id", id);
+        List<Trips> listTrip = q.getResultList();
+
+//        session.close();
+//        res.put("", "success");
+        res.put("data", listTrip);
+
+        return new ResponseEntity<Map<String, List<Trips>>>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/trips/search/{name}", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, List<Trips>>> getTripByName(@PathVariable String name) {
+        Session session = sessionFactory.getObject().openSession();
+        Query q = session.createNamedQuery("Trips.findByName");
+        q.setParameter("name", '%' + name + '%');
         List<Trips> listTrip = q.getResultList();
 
 //        session.close();
@@ -184,7 +199,6 @@ public class TripController {
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 }
-
 
 //    @RequestMapping(value = "/users", method = RequestMethod.GET)
 //    public ResponseEntity<List<Users>> getAllUser() {
