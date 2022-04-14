@@ -58,4 +58,16 @@ button{
     font-size: 18px;
 }
 
+.redirect_login{
+    display: block;
+    
+    /*margin: auto;*/
+    text-decoration: none;
+    
+    text-align: center;
+    color:red;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
 

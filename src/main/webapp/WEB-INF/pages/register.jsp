@@ -24,7 +24,7 @@
                 <input type="text" id="lastname" name="lastname" placeholder="Lastname:" />
                 <input type="text" id="email" name="email" placeholder="Email:"/>
                 <input type="password" id="pwd" name="password" placeholder="Password:" />
-
+                <a class="redirect_login" href="http://localhost:8080/SpringDemo/">Moving to Login ?</a>
                 <button type="submit">Submit</button>
             </form>
         </div>

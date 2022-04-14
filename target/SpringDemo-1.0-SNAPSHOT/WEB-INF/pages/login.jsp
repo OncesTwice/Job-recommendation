@@ -25,6 +25,7 @@
                 <h3 style="color: red;display: none;text-align: center;" id="error">Login failed</h3>
                 <input type="text" id="email" name="email" placeholder="Email:"/>
                 <input type="password" id="pwd" name="password" placeholder="Password:" />
+                <a class="redirect_register" href="http://localhost:8080/SpringDemo/register">Moving to Resgister?</a>
                 <button type="submit">Login</button>
             </form>
         </div>
@@ -60,8 +61,6 @@
                     await localStorage.setItem("account", JSON.stringify(json.data[0]))
 
                     window.location.href = "http://localhost:8080/SpringDemo/home"
-
-
 
                 }
 
