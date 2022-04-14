@@ -44,12 +44,17 @@ body,h1,h2,h3,h4,h5,h6 {
     height: 90px;
 
     text-align: center;
-    color: red;
+    color: orangered;
     font-weight: bold;
 }
 
 .trip_start,.trip_end,.trip_price{
     text-align: left;
+}
+
+.trip_field{
+    font-size: 16px;
+    color: silver;
 }
 
 .trip_booking{

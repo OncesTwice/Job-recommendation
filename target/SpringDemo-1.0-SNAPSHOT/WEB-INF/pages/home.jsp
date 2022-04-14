@@ -194,12 +194,12 @@
                             const {id, img, price, name, startLocation, endLocation} = value
 
                             var html = `<div class='grid-item'>
-                                            <img class='trip_img' src=` + img + ` alt=` + name + `/>
+                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
                                             <div class='w3-container w3-white trip_frame'>
                                                 <p class="trip_name">` + name + `</p>
-                                                <p class="trip_start">Start: ` + startLocation + `</p>
-                                                <p class="trip_end">End: ` + endLocation + `</p>
-                                                <p class="trip_price">Ticket price: ` + price + `</p>
+                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
+                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
+                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
                                                 <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
                                             </div>
                                         </div>`

@@ -50,13 +50,18 @@ public class BusController {
     @RequestMapping(value = "buses/all", method = RequestMethod.GET)
     public ResponseEntity<Map<String, List<Buses>>> getAllBus() {
 
-        Session session = sessionFactory.getObject().openSession();
-        Query q = session.createNamedQuery("Buses.findAll");
-        List<Buses> listTrip = q.getResultList();
+//        Session session = sessionFactory.getObject().openSession();
+//        Query q = session.createNamedQuery("Buses.findAll");
+//        List<Buses> listBus = q.getResultList();
 
+Session session = sessionFactory.getObject().openSession();
+//        Query q = session.createQuery("FROM Users");
+//        List<Users> users = q.getResultList();
+        Query q = session.createNativeQuery("SELECT * FROM Users");
+        List<Buses> listBus = q.getResultList();
 //        session.close();
 //        res.put("", "success");
-        res.put("data", listTrip);
+        res.put("data", listBus);
 
         return new ResponseEntity<Map<String, List<Buses>>>(res, HttpStatus.OK);
     }
