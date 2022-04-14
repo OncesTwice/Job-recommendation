@@ -5,6 +5,7 @@
 package com.SpringDemo.controllers;
 
 import static com.SpringDemo.controllers.BusController.res;
+import static com.SpringDemo.controllers.TripController.res;
 import com.SpringDemo.pojo.Buses;
 import com.SpringDemo.pojo.Orders;
 import com.SpringDemo.pojo.Trips;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +53,20 @@ public class OrderController {
         List<Orders> lisdOrder = queryFindByName.getResultList();
 
         res.put("data", lisdOrder);
+        return new ResponseEntity<Map<String, List<Orders>>>(res, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/orders/{userId}", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, List<Orders>>> getTripById(@PathVariable int userId) {
+        Session session = sessionFactory.getObject().openSession();
+        Query q = session.createNamedQuery("Orders.findByUserId");
+        q.setParameter("userId", userId);
+        List<Orders> listOrder = q.getResultList();
+
+//        session.close();
+//        res.put("", "success");
+        res.put("data", listOrder);
+
         return new ResponseEntity<Map<String, List<Orders>>>(res, HttpStatus.OK);
     }
 

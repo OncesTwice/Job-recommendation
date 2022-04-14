@@ -31,11 +31,11 @@
                 <p class="w3-text-grey" id="account_name">Drawer</p>
             </div>
             <div class="w3-bar-block">
-                <a href="#trip" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
+                <a href="#trip" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
                 <!--<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a>--> 
-                <a href="#ticket" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Tickets</a> 
-                <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
-                <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
+                <a href="#ticket" id="drawer_link" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Tickets</a> 
+                <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
+                <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
             </div>
             <div class="w3-panel w3-large">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -256,7 +256,39 @@
                             }
 
                             getTrips()
+                             
+                             const getTickets = async () => {
+                                const res = await fetch(`http://localhost:8080/SpringDemo/order/` + account.id, {
+                                    method: "GET",
+//                        body: JSON.stringify(_data),
+                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+                                })
+                                const json = await res.json()
 
+                                console.log(json)
+
+
+//                                $("#listTrip").html(``);
+//
+//                                await $.each(json.data, (index, value) => {
+//                                    const {id, img, price, name, startLocation, endLocation} = value
+//
+//                                    var html = `<div class='grid-item'>
+//                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
+//                                            <div class='w3-container w3-white trip_frame'>
+//                                                <p class="trip_name">` + name + `</p>
+//                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
+//                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
+//                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
+//                                                <button class='trip_booking' onclick='booking(` + id + `,` + price + `)'>Book</button>
+//                                            </div>
+//                                        </div>`
+//                                    $("#listTrip").append(html);
+//                                });
+                            }
+                            
+                            getTickets()
+                             
                             const booking = async  (id, price) => {
                                 console.log(id, price, account.id)
                                 const result = await Swal.fire({
