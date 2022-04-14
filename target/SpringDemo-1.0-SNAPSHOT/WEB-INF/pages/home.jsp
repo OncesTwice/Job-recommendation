@@ -229,11 +229,11 @@
                         event.preventDefault()
 
                         const kw = document.getElementById("kw").value
-
-                        const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/${kw}`, {
+                        console.log(${kw})
+                        const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/`+kw, {
                             method: "GET",
 //                        body: JSON.stringify(_data),
-                            headers: {"Content-type": "application/json;charset=UTF-8"}
+//                            headers: {"Content-type": "application/json;charset=UTF-8"}
                         })
                         const json = await res.json()
 
