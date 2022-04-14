@@ -1,0 +1,120 @@
+create database bookingcoach;
+use bookingcoach;
+-- drop database bookingcoach;
+
+CREATE TABLE users (
+  id int PRIMARY KEY AUTO_INCREMENT,
+  firstname varchar(255),
+  lastname varchar(255),
+  email varchar(255),
+  password varchar(255),
+  role varchar(255),
+  created_at datetime,
+  updated_at datetime
+);
+
+CREATE TABLE trips (
+  id int PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255),
+  price decimal,
+  start_location varchar(255),
+  end_location varchar(255),
+  created_at datetime,
+  updated_at datetime,
+  img varchar(255)
+);
+
+CREATE TABLE buses (
+  id int PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255),
+  location varchar(255),
+  start_time datetime,
+  created_at datetime,
+  updated_at datetime
+);
+
+CREATE TABLE orders (
+  id int PRIMARY KEY AUTO_INCREMENT,
+  name_this_time varchar(255),
+  price_this_time decimal,
+  created_at datetime,
+  updated_at datetime,
+  trip_id int,
+  user_id int,
+  bus_id int
+);
+
+-- ALTER TABLE orders ADD FOREIGN KEY (user_id) REFERENCES users (id);
+
+-- ALTER TABLE orders ADD FOREIGN KEY (trip_id) REFERENCES trips (id);
+
+-- ALTER TABLE orders ADD FOREIGN KEY (bus_id) REFERENCES buses (id); 
+
+
+insert into users (id,firstname,lastname,email,password,role,created_at,updated_at) values
+(1,'Quang','Hoang','qh123@gmail.com','12345','admin','2022-04-08','2022-04-09'),
+(2,'Duc','Long','dl123@gmail.com','12345','employee','2022-04-08','2022-04-09'),
+(3,'Hoang','Bao','hb123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(4,'Dinh','Trung','dt123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(5,'Anh','Tuan','at123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(6,'Duc','Nghi','dn123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(7,'Quoc','Hung','hung123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(8,'Tien','Dat','td123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(9,'Minh','Khoe','mk123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(10,'Tan','Phuc','tp123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(11,'Anh','Duy','ad123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(12,'Xuan','Ha','xh123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(13,'Dinh','Quy','dq123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(14,'Phat','Long','pl123@gmail.com','12345','customer','2022-04-08','2022-04-09'),
+(15,'Thien','Bao','tb123@gmail.com','12345','customer','2022-04-08','2022-04-09');
+
+insert into trips(id,name,price,start_location,end_location,img,created_at,updated_at) values
+(1,'Ben Thanh','5000','hutech university','Pho Di Bo Nnguyen Hue','benthanh.png','2022-04-08','2022-04-09'),
+(2,'Nguyen Thien Thuat','3000','hutech university','Nguyen Thien Thuat','nguyenthienthuat.png','2022-04-08','2022-04-09'),
+(3,'Hutech','7000','Nguyen Thi Minh Khai','huetch university','hutech.png','2022-04-08','2022-04-09'),
+(4,'Landmark 81','10000','District 1','District 2','landmark.png','2022-04-08','2022-04-09'),
+(5,'Vuon Chuoi Market','3000','District 4','District 3','vuonchuoi.png','2022-04-08','2022-04-09'),
+(6,'Pho Nguoi Hoa','2000','District 5','District 6','phonguoihoa.png','2022-04-08','2022-04-09'),
+(7,'Phu My Hung','3000','District 7','District 8','phumyhung.png','2022-04-08','2022-04-09'),
+(8,'Suoi tien','5000','District 9','District 2','suoitien.png','2022-04-08','2022-04-09'),
+(9,'Dam sen','5000','District 10','District 11','damsen.png','2022-04-08','2022-04-09'),
+(10,'Pho Di Bo Nguyen Hue','10000','hutech university','District 1','phodibo.png','2022-04-08','2022-04-09'),
+(11,'Cau Sai Gon','5000','hutech university','District 2','causaigon.png','2022-04-08','2022-04-09'),
+(12,'Nguyen Thi Minh Khai','7000','hutech university','District 3','nguyenthiminhkhai.png','2022-04-08','2022-04-09'),
+(13,'Market District4','7000','hutech university','District 4','choquan4.png','2022-04-08','2022-04-09'),
+(14,'Che District6','3000','hutech university','District 6','chequan6.png','2022-04-08','2022-04-09'),
+(15,'Aeon','5000','hutech university','District 7','aeon.png','2022-04-08','2022-04-09');
+
+insert into buses(id,name,location,start_time,created_at,updated_at) values
+(1,'bus number 1','District 1','10:00:00','2022-04-08','2022-04-09'),
+(2,'bus number 2','District 2','02:00:00','2022-04-08','2022-04-09'),
+(3,'bus number 3','District 3','03:00:00','2022-04-08','2022-04-09'),
+(4,'bus number 4','District 4','04:00:00','2022-04-08','2022-04-09'),
+(5,'bus number 5','District 5','05:00:00','2022-04-08','2022-04-09'),
+(6,'bus number 6','District 6','06:00:00','2022-04-08','2022-04-09'),
+(7,'bus number 7','District 7','07:00:00','2022-04-08','2022-04-09'),
+(8,'bus number 8','District 8','08:00:00','2022-04-08','2022-04-09'),
+(9,'bus number 9','District 9','09:00:00','2022-04-08','2022-04-09'),
+(10,'bus number 10','District 10','10:00:00','2022-04-08','2022-04-09'),
+(11,'bus number 11','District 11','11:00:00','2022-04-08','2022-04-09'),
+(12,'bus number 12','District 12','12:00:00','2022-04-08','2022-04-09'),
+(13,'bus number 13','Binh Thanh District','13:00:00','2022-04-08','2022-04-09'),
+(14,'bus number 14','Binh Tan District','14:00:00','2022-04-08','2022-04-09'),
+(15,'bus number 15','Thu Duc District','15:00:00','2022-04-08','2022-04-09');
+
+insert into orders(id,name_this_time,price_this_time,created_at,updated_at,user_id,trip_id,bus_id) values
+(1,'Ben Thanh',10000,'2022-01-01','2022-02-03',1,1,1),
+(2,'Nguyen Thien Thuat',2000,'2022-02-03','2022-03-05',2,2,2),
+(3,'Hutech',3000,'2022-03-05','2022-04-07',3,3,3),
+(4,'Landmark 81',4000,'2022-04-07','2022-05-09',4,4,4),
+(5,'Vuon Chuoi Market',5000,'2022-05-09','2022-06-11',5,5,5),
+(6,'Pho Nguoi Hoa',6000,'2022-06-11','2022-07-13',6,6,6),
+(7,'Phu My Hung',7000,'2022-07-13','2022-08-15',7,7,7),
+(8,'Suoi tien',3000,'2022-08-15','2022-09-17',8,8,8),
+(9,'Dam sen',3000,'2022-09-17','2022-10-19',9,9,9),
+(10,'Pho Di Bo Nguyen Hue',6000,'2022-10-19','2022-11-21',10,10,10),
+(11,'Cau Sai Gon',6000,'2022-11-21','2022-12-23',11,11,11),
+(12,'Nguyen Thi Minh Khai',7000,'2022-12-23','2023-01-25',12,12,12),
+(13,'Market District4',7000,'2023-01-25','2023-02-27',13,13,13),
+(14,'Che District6',2000,'2023-02-27','2023-03-29',14,14,14),
+(15,'Aeon',2000,'2023-03-29','2023-04-01',15,15,15);

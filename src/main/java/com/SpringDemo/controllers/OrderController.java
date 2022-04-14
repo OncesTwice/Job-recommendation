@@ -72,7 +72,9 @@ public class OrderController {
 
     @RequestMapping(value = "/orders/create", method = RequestMethod.POST)
     public ResponseEntity<Map<String, String>> createTrip(@RequestBody Orders order) {
-        System.out.println("123 " + order.getPrice());
+        System.out.println("123 " + order.getPriceThisTime());
+        System.out.println("123 " + order.getNameThisTime());
+
         System.out.println("123 " + order.getUserId());
         System.out.println("123 " + order.getTripId());
         System.out.println("123 " + order.getBusId());
@@ -95,7 +97,8 @@ public class OrderController {
         try {
             Transaction tx = session.beginTransaction();
             Orders u = new Orders();
-            u.setPrice(order.getPrice());
+            u.setPriceThisTime(order.getPriceThisTime());
+            u.setNameThisTime(order.getNameThisTime());
             u.setUserId(order.getUserId());
             u.setTripId(order.getTripId());
             u.setBusId(order.getBusId());

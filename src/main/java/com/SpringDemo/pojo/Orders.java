@@ -17,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -29,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o"),
     @NamedQuery(name = "Orders.findById", query = "SELECT o FROM Orders o WHERE o.id = :id"),
-    @NamedQuery(name = "Orders.findByPrice", query = "SELECT o FROM Orders o WHERE o.price = :price"),
+    @NamedQuery(name = "Orders.findByNameThisTime", query = "SELECT o FROM Orders o WHERE o.nameThisTime = :nameThisTime"),
+    @NamedQuery(name = "Orders.findByPriceThisTime", query = "SELECT o FROM Orders o WHERE o.priceThisTime = :priceThisTime"),
     @NamedQuery(name = "Orders.findByCreatedAt", query = "SELECT o FROM Orders o WHERE o.createdAt = :createdAt"),
     @NamedQuery(name = "Orders.findByUpdatedAt", query = "SELECT o FROM Orders o WHERE o.updatedAt = :updatedAt"),
     @NamedQuery(name = "Orders.findByTripId", query = "SELECT o FROM Orders o WHERE o.tripId = :tripId"),
@@ -43,8 +45,11 @@ public class Orders implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "price")
-    private Long price;
+    @Size(max = 255)
+    @Column(name = "name_this_time")
+    private String nameThisTime;
+    @Column(name = "price_this_time")
+    private Long priceThisTime;
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -73,12 +78,20 @@ public class Orders implements Serializable {
         this.id = id;
     }
 
-    public Long getPrice() {
-        return price;
+    public String getNameThisTime() {
+        return nameThisTime;
     }
 
-    public void setPrice(Long price) {
-        this.price = price;
+    public void setNameThisTime(String nameThisTime) {
+        this.nameThisTime = nameThisTime;
+    }
+
+    public Long getPriceThisTime() {
+        return priceThisTime;
+    }
+
+    public void setPriceThisTime(Long priceThisTime) {
+        this.priceThisTime = priceThisTime;
     }
 
     public Date getCreatedAt() {
