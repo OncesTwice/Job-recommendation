@@ -62,7 +62,7 @@
                         <span class="w3-margin-right">Filter:</span> 
                         <input class="trip_filter" id="kw" type="text"/>
                         <button type="submit" class="w3-button w3-black">Search</button>
-                        <button type="button" class="w3-button w3-black">ALL</button>
+                        <button type="button" class="w3-button w3-black" onclick="getTrips()">ALL</button>
                         <!--                        <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
                                                 <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
                                                 <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>-->
