@@ -207,8 +207,9 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script>
-                            document.getElementById("account_name").innerHTML = `Hello ` + JSON.parse(localStorage.getItem("account")).firstname
-//                    const account = JSON.parse(localStorage.getItem("account"));
+                            const account = JSON.parse(localStorage.getItem("account"));
+                            document.getElementById("account_name").innerHTML = `Hello ` + account.firstname
+
 ////                    Alert({message: account.role})
 //                    if (!account) window.location.href="/"  
 //                    if (account.role!=="customer") window.location.href="http://localhost:8080/SpringDemo/dashboard"
@@ -247,7 +248,7 @@
                                                 <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
                                                 <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
                                                 <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-                                                <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
+                                                <button class='trip_booking' onclick='booking(` + id + `,` + price + `)'>Book</button>
                                             </div>
                                         </div>`
                                     $("#listTrip").append(html);
@@ -256,7 +257,8 @@
 
                             getTrips()
 
-                            const booking = async  (id) => {
+                            const booking = async  (id, price) => {
+                                console.log(id, price, account.id)
                                 const result = await Swal.fire({
                                     title: 'Are you sure?',
                                     text: "You won't be able to revert this!",
@@ -273,10 +275,10 @@
                                 Alert({success: "Deleled"})
 
                                 const _data = {
-                                    "price": 7000,
-                                    "userId": 1,
+                                    "price": price,
+                                    "userId": account.id,
                                     "busId": 1,
-                                    "tripId": 1
+                                    "tripId": id
                                 }
 
                                 const res = await fetch('http://localhost:8080/SpringDemo/orders/create', {
