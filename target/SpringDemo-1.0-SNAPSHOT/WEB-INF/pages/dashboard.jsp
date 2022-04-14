@@ -34,7 +34,7 @@
             <div class="w3-bar-block">
                 <a href="#trip" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Trips</a> 
                 <!--<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a>--> 
-                <a href="#ticket" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>My Tickets</a> 
+                <a href="#user" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>List User</a> 
                 <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT US</a> 
                 <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT US</a>
                 
@@ -81,7 +81,7 @@
             </div>
 
             <div class="w3-container w3-padding-large">
-                <h4 id="ticket"><b>My ticket</b></h4>
+                <h4 id="user"><b>List User</b></h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -91,7 +91,7 @@
                             <th scope="col">Bus number</th>
                         </tr>
                     </thead>
-                    <tbody id="listTicket">
+                    <tbody id="listUser">
                         <!--js loop-->
 
                     </tbody>
