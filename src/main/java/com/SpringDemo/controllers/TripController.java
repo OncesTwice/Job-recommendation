@@ -184,12 +184,13 @@ public class TripController {
         Date date = new Date();
         Session session = sessionFactory.getObject().openSession();
         Transaction tx = session.beginTransaction();
-        session.createNativeQuery("UPDATE trips SET name=?,start_location = ?, end_location=?,updated_at=? WHERE id = ?")
+        session.createNativeQuery("UPDATE trips SET name=?,price=?,start_location = ?, end_location=?,updated_at=? WHERE id = ?")
                 .setParameter(1, trip.getName())
-                .setParameter(2, trip.getStartLocation())
-                .setParameter(3, trip.getEndLocation())
-                .setParameter(4, date)
-                .setParameter(5, trip.getId())
+                .setParameter(2, trip.getPrice())
+                .setParameter(3, trip.getStartLocation())
+                .setParameter(4, trip.getEndLocation())
+                .setParameter(5, date)
+                .setParameter(6, trip.getId())
                 .executeUpdate();
 
         tx.commit();

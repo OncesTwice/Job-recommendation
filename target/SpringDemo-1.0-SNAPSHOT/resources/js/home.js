@@ -65,9 +65,38 @@ const getTrips = async () => {
                                                 <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
                                                 <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
                                                 <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-                                                <button class='trip_booking trip_edit' onclick="editing('${id}','${name}','${price}')">Edit</button>
-                                                <button class='trip_booking trip_delete' onclick="deleting('${id}','${name}','${price}')">Delete</button>
+                                                <button class='trip_booking trip_edit' type="button" data-toggle="modal" data-target="#editModal${index}">Edit</button>
+                                                <button class='trip_booking trip_delete' type="button" onclick="deleting('${id}','${name}','${price}')">Delete</button>
+                                                
+                                                
+                                                
+                                                <div class="modal fade" id="editModal${index}" role="dialog">
+                                                    <div class="modal-dialog">
+
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Edit Form</h4>
+                                                        </div>
+                                                        <form id="editForm${index}"  class="modal-body" enctype="multipart/form-data">
+                                                            <input type="text" name ="trip_id" disabled value='${id}'/>
+                                                            <input type="text" name ="trip_name" placeholder="Trip Name:"/>
+                                                            <input type="text" name ="trip_price" placeholder="Trip Price:"/>
+                                                            <input type="text" name ="trip_startLocation" placeholder="Trip Start Location:"/>
+                                                            <input type="text" name ="trip_endLocation" placeholder="Trip End Location:"/>
+                                                            <button type="submit" onclick="editing(event,'${index}','${id}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                                                        </form>
+                                                        
+                                                      </div>
+
+                                                    </div>
+                                                  </div>
+                                                
+                                                
+                                                
+                                                
                                             </div>
+                                            
                                         </div>`
             $("#listTrip").append(html);
         });
