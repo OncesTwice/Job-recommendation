@@ -57,7 +57,7 @@
                 <a href="#"><img src="resources/images/logo.png" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
                 <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
                 <div class="w3-container">
-                    <h1><b>My Portfolio</b></h1>
+                    <h1><b>List Trips</b></h1>
                     <div class="w3-section w3-bottombar w3-padding-16">
                         <span class="w3-margin-right">Filter:</span> 
                         <button class="w3-button w3-black">ALL</button>
@@ -191,15 +191,15 @@
                         $("#listTrip").html(``);
 
                         await $.each(json.data, (index, value) => {
-                            const {id, img, name, startLocation, endLocation} = value
+                            const {id, img, price, name, startLocation, endLocation} = value
 
                             var html = `<div class='grid-item'>
                                             <img class='trip_img' src=` + img + ` alt=` + name + `/>
-                                            <div class='w3-container w3-white'>
-                                                <p class="trip_name">Name: ` + name + `</p>
+                                            <div class='w3-container w3-white trip_frame'>
+                                                <p class="trip_name">` + name + `</p>
                                                 <p class="trip_start">Start: ` + startLocation + `</p>
                                                 <p class="trip_end">End: ` + endLocation + `</p>
-                                                <p class="trip_price">Ticket price: ` + startLocation + `</p>
+                                                <p class="trip_price">Ticket price: ` + price + `</p>
                                                 <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
                                             </div>
                                         </div>`

@@ -27,13 +27,28 @@ body,h1,h2,h3,h4,h5,h6 {
     text-align: center;
 }
 
+.trip_frame{
+    width: 100%;
+    height: 500px;
+    /*object-fit: cover;*/
+}
+
 .trip_img{
     width: 100%;
     height: 220px;
     object-fit: cover;
 }
 
-.trip_name,.trip_start,.trip_end,.trip_price{
+.trip_name{
+    display: block;
+    height: 90px;
+
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.trip_start,.trip_end,.trip_price{
     text-align: left;
 }
 
