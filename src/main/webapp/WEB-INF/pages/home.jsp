@@ -15,29 +15,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="resources/css/home.css"/>
-        <style>
-            body,h1,h2,h3,h4,h5,h6 {
-                font-family: "Raleway", sans-serif
-            }
-
-            .grid-container {
-                display: grid;
-                grid-template-columns: 33% 33% 33%;
-                /*height: 600px;*/
-
-                                
-                padding: 10px;
-            }
-            .grid-item {
-                /*background-color: rgba(255, 255, 255, 0.8);*/
-                /*border: 1px solid rgba(0, 0, 0, 0.8);*/
-                padding: 20px;
-                font-size: 30px;
-                text-align: center;
-            }
-           
-        </style>
     </head>
+    
     <body class="w3-light-grey w3-content" style="max-width:1600px">
 
         <!-- Sidebar/menu -->
@@ -213,7 +192,7 @@
                             const {id, img, name, startLocation, endLocation} = value
 
                             var html = `<div class='grid-item'>
-                                            <img src=` + img + ` alt=` + name + `/>
+                                            <img class='trip_img' src=` + img + ` alt=` + name + `/>
                                             <div class='w3-container w3-white'>
                                                 <p class="trip_name">Name: ` + name + `</p>
                                                 <p class="trip_start">Start: ` + startLocation + `</p>

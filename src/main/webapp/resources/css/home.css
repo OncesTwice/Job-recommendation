@@ -7,6 +7,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Kien Mason
 */
 
+body,h1,h2,h3,h4,h5,h6 {
+    font-family: "Raleway", sans-serif
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    /*height: 600px;*/
+
+
+    padding: 10px;
+}
+.grid-item {
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    /*border: 1px solid rgba(0, 0, 0, 0.8);*/
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.trip_img{
+    width: 100%;
+}
+
 .trip_name,.trip_start,.trip_end,.trip_price{
     text-align: left;
 }
@@ -15,7 +39,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: orangered;
     border-radius: 10px;
     border: none;
-    
+
     margin-bottom: 10px;
 
     color: white;
