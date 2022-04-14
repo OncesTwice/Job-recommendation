@@ -5,8 +5,6 @@
 package com.SpringDemo.controllers;
 
 //import com.SpringDemo.pojo.User;
-import static com.SpringDemo.controllers.TripController.res;
-import com.SpringDemo.pojo.Trips;
 import com.SpringDemo.pojo.Users;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -80,7 +78,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
-    public ResponseEntity<Map<String, List<Users>>> getAllTrip() {
+    public ResponseEntity<Map<String, List<Users>>> getAllUser() {
 
         Session session = sessionFactory.getObject().openSession();
         Query q = session.createNamedQuery("Users.findAll");
@@ -170,28 +168,43 @@ public class UserController {
         return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
     }
 //
-//    /* ---------------- DELETE USER ------------------------ */
-//    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<String> deleteUserById(@PathVariable int id) {
-//        Users user = mapUser.get(id);
-//        if (user == null) {
-//            return new ResponseEntity<String>("Not Found User", HttpStatus.OK);
-//        }
-//
-//        mapUser.remove(id);
-//        return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
-//    }
+    /* ---------------- DELETE USER ------------------------ */
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
+        System.out.println(id);
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+        session.createNativeQuery("DELETE FROM Users WHERE id = ?")
+                .setParameter(1, id)
+                .executeUpdate();
+
+        tx.commit();
+
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+    }
 //
 //    /* ---------------- UPDATE USER ------------------------ */
-//    @RequestMapping(value = "/users", method = RequestMethod.PUT)
-//    public ResponseEntity<String> updateUser(@RequestBody Users user) {
-//        Users oldUser = mapUser.get(user.getId());
-//        if (oldUser == null) {
-//            return new ResponseEntity<String>("Not Found User", HttpStatus.NO_CONTENT);
-//        }
-//
-//        // replace old user by new user.
-//        mapUser.put(user.getId(), user);
-//        return new ResponseEntity<String>("Updated!", HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/users/update", method = RequestMethod.PUT)
+    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Users user) {
+        System.out.println(user.getId());
+        Date date = new Date();
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+        session.createNativeQuery("UPDATE users SET firstname=?,lastname=?,password = ?,role=?,updated_at=? WHERE id = ?")
+                .setParameter(1, user.getFirstname())
+                .setParameter(2, user.getLastname())
+                .setParameter(3, user.getPassword())
+                .setParameter(4, user.getRole())
+                .setParameter(5, date)
+                .setParameter(6, user.getId())
+                .executeUpdate();
+
+        tx.commit();
+
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+    }
 }
