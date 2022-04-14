@@ -170,40 +170,40 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script>
-                    document.getElementById("account_name").innerHTML = `Hello ` + JSON.parse(localStorage.getItem("account")).firstname
+                            document.getElementById("account_name").innerHTML = `Hello ` + JSON.parse(localStorage.getItem("account")).firstname
 //                    const account = JSON.parse(localStorage.getItem("account"));
 ////                    Alert({message: account.role})
 //                    if (!account) window.location.href="/"  
 //                    if (account.role!=="customer") window.location.href="http://localhost:8080/SpringDemo/dashboard"
 
-                    // Script to open and close sidebar
-                    function w3_open() {
-                        document.getElementById("mySidebar").style.display = "block";
-                        document.getElementById("myOverlay").style.display = "block";
-                    }
+                            // Script to open and close sidebar
+                            function w3_open() {
+                                document.getElementById("mySidebar").style.display = "block";
+                                document.getElementById("myOverlay").style.display = "block";
+                            }
 
-                    function w3_close() {
-                        document.getElementById("mySidebar").style.display = "none";
-                        document.getElementById("myOverlay").style.display = "none";
-                    }
+                            function w3_close() {
+                                document.getElementById("mySidebar").style.display = "none";
+                                document.getElementById("myOverlay").style.display = "none";
+                            }
 
-                    const getTrips = async () => {
-                        const res = await fetch('http://localhost:8080/SpringDemo/trips/all', {
-                            method: "GET",
+                            const getTrips = async () => {
+                                const res = await fetch('http://localhost:8080/SpringDemo/trips/all', {
+                                    method: "GET",
 //                        body: JSON.stringify(_data),
-                            headers: {"Content-type": "application/json;charset=UTF-8"}
-                        })
-                        const json = await res.json()
+                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+                                })
+                                const json = await res.json()
 
-                        console.log(json)
+                                console.log(json)
 
 
-                        $("#listTrip").html(``);
+                                $("#listTrip").html(``);
 
-                        await $.each(json.data, (index, value) => {
-                            const {id, img, price, name, startLocation, endLocation} = value
+                                await $.each(json.data, (index, value) => {
+                                    const {id, img, price, name, startLocation, endLocation} = value
 
-                            var html = `<div class='grid-item'>
+                                    var html = `<div class='grid-item'>
                                             <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
                                             <div class='w3-container w3-white trip_frame'>
                                                 <p class="trip_name">` + name + `</p>
@@ -213,39 +213,68 @@
                                                 <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
                                             </div>
                                         </div>`
-                            $("#listTrip").append(html);
-                        });
-                    }
+                                    $("#listTrip").append(html);
+                                });
+                            }
 
-                    getTrips()
+                            getTrips()
 
-                    const booking = (id) => {
-                        let text = "Are you sure?";
-                        if (!confirm(text + id))
-                            return;
-                    }
+                            const booking = async  (id) => {
+                                const result = await Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Yes'
+                                })
 
-                    const search = async (event) => {
-                        event.preventDefault()
+                                if (!result.isConfirmed)
+                                    return
 
-                        const kw = document.getElementById("kw").value
-                        console.log(${kw})
-                        const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/`+kw, {
-                            method: "GET",
+                                Alert({success: "Deleled"})
+
+                                const _data = {
+                                    "price": 7000,
+                                    "userId": 1,
+                                    "busId": 1,
+                                    "tripId": 1
+                                }
+
+                                const res = await fetch('http://localhost:8080/SpringDemo/orders/create', {
+                                    method: "POST",
+                                    body: JSON.stringify(_data),
+                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+                                })
+                                const json = await res.json()
+
+                                console.log(json)
+
+
+                            }
+
+                            const search = async (event) => {
+                                event.preventDefault()
+
+                                const kw = document.getElementById("kw").value
+                                console.log(${kw})
+                                const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/` + kw, {
+                                    method: "GET",
 //                        body: JSON.stringify(_data),
 //                            headers: {"Content-type": "application/json;charset=UTF-8"}
-                        })
-                        const json = await res.json()
+                                })
+                                const json = await res.json()
 
-                        console.log(json)
+                                console.log(json)
 
 
-                        $("#listTrip").html(``);
+                                $("#listTrip").html(``);
 
-                        await $.each(json.data, (index, value) => {
-                            const {id, img, price, name, startLocation, endLocation} = value
+                                await $.each(json.data, (index, value) => {
+                                    const {id, img, price, name, startLocation, endLocation} = value
 
-                            var html = `<div class='grid-item'>
+                                    var html = `<div class='grid-item'>
                                             <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
                                             <div class='w3-container w3-white trip_frame'>
                                                 <p class="trip_name">` + name + `</p>
@@ -255,10 +284,9 @@
                                                 <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
                                             </div>
                                         </div>`
-                            $("#listTrip").append(html);
-                        });
-                    }
-
+                                    $("#listTrip").append(html);
+                                });
+                            }
 
         </script>
 
