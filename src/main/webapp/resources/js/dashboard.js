@@ -18,17 +18,17 @@ const deleting = async  (id, name, price) => {
     if (!result.isConfirmed)
         return
 
-    const _data = {
-        "priceThisTime": price,
-        "nameThisTime": name,
-        "userId": account.id,
-        "busId": 1,
-        "tripId": id
-    }
+//    const _data = {
+//        "priceThisTime": price,
+//        "nameThisTime": name,
+//        "userId": account.id,
+//        "busId": 1,
+//        "tripId": id
+//    }
 
-    const res = await fetch('http://localhost:8080/SpringDemo/orders/create', {
-        method: "POST",
-        body: JSON.stringify(_data),
+    const res = await fetch('http://localhost:8080/SpringDemo/trips/delete/' + id, {
+        method: "DELETE",
+//        body: JSON.stringify(_data),
         headers: {"Content-type": "application/json;charset=UTF-8"}
     })
     const json = await res.json()
@@ -36,9 +36,6 @@ const deleting = async  (id, name, price) => {
     Alert({success: "Success"})
     window.location.reload();
     console.log(json)
-
-
-
 
 }
 

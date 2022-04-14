@@ -65,8 +65,8 @@ const getTrips = async () => {
                                                 <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
                                                 <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
                                                 <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-                                                <button class='trip_booking trip_edit' onclick="Editing('${id}','${name}','${price}')">Edit</button>
-                                                <button class='trip_booking trip_delete' onclick="Deleting('${id}','${name}','${price}')">Delete</button>
+                                                <button class='trip_booking trip_edit' onclick="editing('${id}','${name}','${price}')">Edit</button>
+                                                <button class='trip_booking trip_delete' onclick="deleting('${id}','${name}','${price}')">Delete</button>
                                             </div>
                                         </div>`
             $("#listTrip").append(html);
