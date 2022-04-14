@@ -8,9 +8,8 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--<link href="<c:url value="/css/styles.css" />" rel="stylesheet"/>-->
-<style type="text/css">
-    <%@ include file="/WEB-INF/css/login.css"%>
-</style>
+<link rel="stylesheet" href="resources/css/login.css"/>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,7 +37,7 @@
                 const login = async (event) => {
                     event.preventDefault()
                     const email = (document.getElementById("email").value)
-                    const pwd = (document.getElementById("pwd").value)
+                    const password = (document.getElementById("pwd").value)
 
                     if (!email || email.length < 5)
                         return Alert({error: `Login Fail : Input not valid!`})

@@ -10,9 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <style type="text/css">
-            <%@ include file="/WEB-INF/css/register.css"%>
-        </style>
+        <link rel="stylesheet" href="resources/css/register.css"/>
     </head>
     <body>
         <div class="wrapper">

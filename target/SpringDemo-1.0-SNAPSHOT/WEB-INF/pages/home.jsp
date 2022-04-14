@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="resources/css/home.css"/>
         <style>
             body,h1,h2,h3,h4,h5,h6 {
                 font-family: "Raleway", sans-serif
@@ -34,8 +35,7 @@
                 font-size: 30px;
                 text-align: center;
             }
-            
-            <%@ include file="/WEB-INF/css/home.css"%>
+           
         </style>
     </head>
     <body class="w3-light-grey w3-content" style="max-width:1600px">
@@ -46,7 +46,7 @@
                 <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
                     <i class="fa fa-remove"></i>
                 </a>
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAmVBMVEUboOL////w7+/f3t0rpuQAnOEAmuASnuIAneL48/D08e8AmODc3+Dh4OD7/v/t9/xwvuvk8/thuOmJxOhQsufk4N3S6viBxO253vSv2vPG4vbZ5e3J3+zh6e6jz+rr7u+zzt6czvBAquR6wezq9fyLvuC/4PWWze9luena7vq22fNaseV/vueYyOiqz+mGw+ijyN/Q4u3E09vEmZOHAAAJEUlEQVR4nO2dbXuiOhCGAyWJ0FVRqWjry4rdamtbT/f//7gDqCsqkAlklHjl+dj2Uu5OMpmZTAIhdy7n1g+ALkOovwyh/jKE+ssQ6i9DqL8Mof4yhPrLEOovQ6i/DKH+MoT6yxDqL0Oovwyh/jKE+ssQ6i9DqL9uTsixv+CmhJzSKMT+ktsRcsqCxbtlMeTvuRUhZ2QV41lW5y4JOefBm7VT7w4JOSVhzzro+f4IKV91raPG90ZI6apjZbWgyN94XULOw65l3S8hZ/2eda57IqTk7YLvrghZ2MkBtELssO1ahNx5zuOzrP6dELL1uYc5CP0BrkLIH1cFfJZ1F7kF5wUjNBH2gn8NQu68FwPeAyF3iqbgnRAKAK1H7AfAJhQBdnQn5OQyTjsRenqITciG5YDWUHNCNhYAWm/KCHmsvJ+jEtKlCND6UEDIeYsy6mzWy7zfohI6ubG2SkLearFH4n/OXl6mruvnGRGTkJWEMrUJOWlRSp3t12Rue65n27b7mZuIIRJyXwxYjZBzypzo83viuW4KZ6eA+R+FSVi+ElYkTOk2s8k0NtwBLgUcFHwSHiEdAADlCBM6sp79zD03C5cCfhV9EBohJxATWit4EaPVIv3Zj+d553QJ4KzwP4VHGEIAoUUMTkm0nczdPLpY3kfxPwqNkIqimZ1yHfyZOOXr2cvlyDxacJK/2KdCI3RAgOIyTTz11t/xxCuiSyz40ir5FCxC0FIRKygljAfn5qPEeHvA0ifBImQftQl5i22+pwK8GHDqlP6X0Ajzqr85ioo+gDNn8FPgWE4Jy4cBHmFZbSaj/O+PQ+nNyIbw2W6/Vf4kaISg1TCfkFNn8CIcnXsL+qIFFYvwEQaYM0o5C77nZa7zBHAgjBjQCMWJU6qzSRR7l/XEhpkvGaIzcUh061F6StgiW7HzzACOAHUsNEJYSHNC2Ir+gIdnOkQnAieDSwhcLY4xDY3+e3iQ4ItXetDDoxGOYISHuJRGv5+e5AjnEShqxyKkxbtNJ1omT8l5kPJJEXoRZIwixqUBjDDJD+lmzydD6K2BmeWtc4sFy/A9tMGA7hc0dcbLgGFh20d05JMgdL/B1Q80QkgpMdY0wwcn9Cbw8g6eDWEJYvvhQZ5QkBFeixDmauwTwl8wQuA6gUxImGBfrQahKGG6FqFw3ymRJ0/obqWqyHiEwIkoTSjhRlMhVvUpKIGSJYSF2xkhEsLWi7YcoTeVfQzMnRlQ1duWI5Ryo6kwCYk0oXA9dIVlmQuh7pCCsmAZwuIdpmJhEsIyqDac0JtUaLdF3cePIIRzMKFUsPZPqISg/OJkIpYTSnuZRLjdJjOIEaGE7rJSSziuDTcQwjaMUDaWOQi56wtSNc0QlqyH3k/Fo4rIXV+QmqINIrQrTUKCTci3AEIPQuiuJcPRf0IepaD1AjAPq05Cgt99Cckv2kLCaivhTtiEkPwiMxHn+YTy8fZR2ISQRL8jIizoyYMJmZAuAISWgFCmdngp7D5vUI44L5+H05J+ILGwCUHte3YpobepdXIIe5SCItPjMM1JLjzATnaZsD0NbBuxXUzo/dQ8+4VNCCoLH4dpDmGNhSIVctQGKtVkAreLsM0Vt5MIVEBYcHZBVlx8HOF0mJ4TSldHL1VA6PSdpOdYAjP3T4FbbEfCi1Fad4wWj1JOQj+cLaOIMFZqT86440SRk/zdxS8jYN/QcSKqHqNl8zAeqLQ/eH57HoabIOXMAeV087ZzJp3heEPOIGGbM6lyCb0fBSdqyj0N54xF69G71e0NB8uAMkaznJSFJ77ydRw9ZhkBZ2bOh+mpCVX4QcBncEZJME6qu53ucBEmnAlo/OPw9eJJh/2jHaFdQ4kOw3SueIxCV4vkoAPtz3o7m3SHH6t+fzvKt1DPT8dz/B8ANkLvdGnD2mu9DOEOkzJnObo024Xe/XjaOmtgV9Re7UsbCpp/1ROmlIwEK3Gdt/vahU/BnexzG3rVCxd1CPfnjrbAzkMJdc6X/Kmiuwgqeat4jjnhUNZKArVPl/zqxTUVhDvIaAULq4GyTwjr5fUqCBNR3lc4WjunE7HwmMI1CRPHE6ljbGecqVdhK7RAdaMGztaA9QMkO2PDqbr7FOvHRZzAo89yHW3oLhW5GaIkA+ZUKngpVvvgarwXhfcQKMnxqeDyC6DsA6Gr8molNVUM7ihZOPaElRoSCqWoTsMdFf5mvnM1ntLbsVRVokS3tICULolq8t6jlNXaOGirUKDE1/zKv/yhstRVE1V41MTXPM3VrRSJFNZL2aI+YjJMlUWkO6msCINrh6VGfPpqrA2h1yiUKfY1T3/UXlKntKoPPQpUonazCQmFXRVRIq/hhITB9gvLjPj0p7nzMJFMjTRX9sNftXe2qibkwBs/Soz4q7mrRSpOa64Z3kOg9IHU75ByWjMjVjwRMfaAC24Mhsr929C4NCPq1JqM9kblwyDt47N1nZT4t8phinbSmfrV7eipNCLi2TUajavGqX+bVokqEGd0XbDJKNJno6qJZeKMrccVpmTtPqGjrnBTMmOB/yxL+aKmoYdc68ZyzkjkfwAvVtppouqC4eu9OSC2JYsWY/Dm8EiRt7nyO0ooY6S/HfcgTnZxo13u2kr6VJgT+OOhCHOlBPFG73tK23FItByXhgVKEG/6VrJ0bgaDt9eiubnK6ZWT1W0JE6WdZf4ofzkZy7RH5uv2hKk441H4lmPKYe11sSGEiWJb9mcX3uc1qlm2aRAhSaL1x2Bxvk/n1/M3zSIkx5cGZidjLcTGEZL0Vt1gnJ2TPacGYxMJyS4nec5ADqr71IYSkvSK1u1xCRlGVc3YXMLdaP2XQXeqrv5NJiS7l3kefGsvqGTGhhOmvvVff+DIqWDHxhOStD9w71o7C96o21vUKR6si30XffgoaUY9CEnyes/96y+7vlyoqg1h5vzKeyjTm6kRYdKU7MeMQeRvJTbgtCJMkslld1t+1OxcmhEmTmdZfo/+ubQjlH7fvIaEkjKE+ssQ6i9DqL8Mof4yhPrLEOovQ6i/DKH+MoT6yxDqL0Oovwyh/jKE+ssQ6i9DqL8Mof4yhPrLEOovQ6i/DKH+MoT6yxDqL+d/LRp/gCpNHhcAAAAASUVORK5CYII=" style="width:45%;" class="w3-round"><br><br>
+                <img src="resources/images/logo.png" style="width:45%;" class="w3-round"><br><br>
                 <h4><b>PORTFOLIO</b></h4>
                 <p class="w3-text-grey">Template by W3.CSS</p>
             </div>
@@ -157,7 +157,7 @@
                                 <span>Sed mattis nunc</span>
                             </li>
                             <li class="w3-padding-16">
-                                <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+                                <img src="resources/images/trip1.jpg" class="w3-left w3-margin-right" style="width:50px">
                                 <span class="w3-large">Ipsum</span><br>
                                 <span>Praes tinci sed</span>
                             </li> 
