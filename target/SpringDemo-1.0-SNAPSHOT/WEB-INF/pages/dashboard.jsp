@@ -19,12 +19,12 @@
         <script src="resources/js/alert.js"></script>
 
         <script>
-            const account = JSON.parse(localStorage.getItem("account"));
-//                    Alert({message: account.role})
-            if (!account)
-                window.location.href = "http://localhost:8080/SpringDemo/"
-            if (account.role === "customer")
-                window.location.href = "http://localhost:8080/SpringDemo/home"
+//            const account = JSON.parse(localStorage.getItem("account"));
+////                    Alert({message: account.role})
+//            if (!account)
+//                window.location.href = "http://localhost:8080/SpringDemo/"
+//            if (account.role === "customer")
+//                window.location.href = "http://localhost:8080/SpringDemo/home"
 
         </script>
     </body>

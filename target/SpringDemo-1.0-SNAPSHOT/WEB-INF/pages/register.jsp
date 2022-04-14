@@ -31,12 +31,17 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
         <script>
-                const account = JSON.parse(localStorage.getItem("account"));
-                if (account.role === "manager" || account.role === "employee")
-                    window.location.href = "http://localhost:8080/SpringDemo/dashboard"
-                if (account.role === "customer")
-                    window.location.href = "http://localhost:8080/SpringDemo/"
-                
+//                const load = () => {
+//                    const account = JSON.parse(localStorage.getItem("account"));
+//                    if (account.role === "manager" || account.role === "employee")
+//                        window.location.href = "http://localhost:8080/SpringDemo/dashboard"
+//                    if (account.role === "customer")
+//                        window.location.href = "http://localhost:8080/SpringDemo/"
+//                }
+//                
+//                load()
+
+
                 const register = async (event) => {
                     event.preventDefault()
                     const email = document.getElementById("email").value
