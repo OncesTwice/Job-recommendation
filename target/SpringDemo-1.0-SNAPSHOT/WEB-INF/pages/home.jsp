@@ -84,29 +84,13 @@
                         <tr>
                             <th scope="col">ID Ticket</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Tine</th>
+                            <th scope="col">Time</th>
                             <th scope="col">Trip</th>
                         </tr>
                     </thead>
-                    <tbody id="ticket_body">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                    <tbody id="listTicket">
+                        <!--js loop-->
+
                     </tbody>
                 </table>
 
@@ -256,39 +240,35 @@
                             }
 
                             getTrips()
-                             
-                             const getTickets = async () => {
-                                const res = await fetch(`http://localhost:8080/SpringDemo/order/` + account.id, {
+
+                            const getTickets = async () => {
+                                const res = await fetch(`http://localhost:8080/SpringDemo/orders/` + account.id, {
                                     method: "GET",
 //                        body: JSON.stringify(_data),
-                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+//                                    headers: {"Content-type": "application/json;charset=UTF-8"}
                                 })
                                 const json = await res.json()
 
                                 console.log(json)
 
 
-//                                $("#listTrip").html(``);
-//
-//                                await $.each(json.data, (index, value) => {
-//                                    const {id, img, price, name, startLocation, endLocation} = value
-//
-//                                    var html = `<div class='grid-item'>
-//                                            <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
-//                                            <div class='w3-container w3-white trip_frame'>
-//                                                <p class="trip_name">` + name + `</p>
-//                                                <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
-//                                                <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
-//                                                <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-//                                                <button class='trip_booking' onclick='booking(` + id + `,` + price + `)'>Book</button>
-//                                            </div>
-//                                        </div>`
-//                                    $("#listTrip").append(html);
-//                                });
+                                $("#listTicket").html(``);
+
+                                await $.each(json.data, (index, value) => {
+                                    const {id, price, tripId} = value
+
+                                    var html = `<tr>
+                                                    <th scope="row">` + id + `</th>
+                                                    <td>` + `` + `</td>
+                                                    <td>` + price + `</td>
+                                                    <td>` + 1 + `</td>
+                                                </tr>`
+                                    $("#listTicket").append(html);
+                                });
                             }
-                            
+
                             getTickets()
-                             
+
                             const booking = async  (id, price) => {
                                 console.log(id, price, account.id)
                                 const result = await Swal.fire({
