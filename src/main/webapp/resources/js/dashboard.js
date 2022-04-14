@@ -225,3 +225,38 @@ const deleteUser = async  (id) => {
     console.log(json)
 
 }
+
+const addUser = async (event)=>{
+    event.preventDefault()
+
+    let myForm = document.getElementById(`addUserForm`);
+    let formData = new FormData(myForm);
+    
+    const email = formData.get("add_email");
+    const firstname = formData.get("add_firstname");
+    const lastname = formData.get("add_lastname");
+    const password = formData.get("add_password");
+    const role = formData.get("add_role");
+
+    const _data = {
+        email,
+        firstname,
+        lastname,
+        password,
+        role
+    }
+    console.log(_data);
+
+    const res = await fetch('http://localhost:8080/SpringDemo/users/create/', {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const json = await res.json()
+
+    if(json.message!=="success") return Alert({error: json.message})
+
+    Alert({success: "Success"})
+    window.location.reload();
+    console.log(json)
+}
