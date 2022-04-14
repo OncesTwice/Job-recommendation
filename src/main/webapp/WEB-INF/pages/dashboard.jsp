@@ -36,8 +36,8 @@
                 <!--<a href="#portfolio" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>All Buses</a>--> 
                 <a href="#user" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-th-large fa-fw w3-margin-right"></i>List User</a> 
                 <a href="#addUser" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-user fa-fw w3-margin-right"></i>Add User</a> 
-                <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Doughnut Chart Revenue</a>
-                <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Bar Chart Revenue</a>
+                <a href="#lineChart" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Line Chart Revenue</a>
+                <a href="#doughnutChart" onclick="w3_close()" class="w3-bar-item w3-button w3-padding drawer_link"><i class="fa fa-envelope fa-fw w3-margin-right"></i>Doughnut Chart Revenue</a>
             </div>
             <button class="btn_logout" type="button" onclick="logout()">Log out</button>
             <div class="w3-panel w3-large">
@@ -129,53 +129,51 @@
                 </div>
             </div>
 
-            <canvas id="lineChart" style="width:100%;max-width:600px"></canvas>
-            
-            <canvas id="doughnutChart" style="width:100%;max-width:600px"></canvas>
-<!--            <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-                <h4 id="about"><b>Chart</b></h4>
-                <p>Just me, myself and I, exploring the universe of unknownment. I have a heart of love and an interest of lorem ipsum and mauris neque quam blog. I want to share my world with you. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-                <hr>
 
+            <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+                <h4 style="text-align: center;"><b>Line Chart Revenue</b></h4>
 
-                <hr>
+                <canvas id="lineChart" style="width:100%;max-width:1100px"></canvas>
 
-            </div>-->
+                <h4 style="text-align: center;"><b>Doughtnut Chart Revenue</b></h4>
+                
+                <canvas id="doughnutChart" style="width:100%;max-width:1100px"></canvas>
+            </div>
 
             <!-- Contact Section -->
-<!--            <div class="w3-container w3-padding-large w3-grey">
-                <h4 id="contact"><b>Contact us</b></h4>
-                <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
-                    <div class="w3-third w3-dark-grey">
-                        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
-                        <p>email@email.com</p>
-                    </div>
-                    <div class="w3-third w3-teal">
-                        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
-                        <p>Chicago, US</p>
-                    </div>
-                    <div class="w3-third w3-dark-grey">
-                        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
-                        <p>512312311</p>
-                    </div>
-                </div>
-                <hr class="w3-opacity">
-                <form action="/action_page.php" target="_blank">
-                    <div class="w3-section">
-                        <label>Name</label>
-                        <input class="w3-input w3-border" type="text" name="Name" required>
-                    </div>
-                    <div class="w3-section">
-                        <label>Email</label>
-                        <input class="w3-input w3-border" type="text" name="Email" required>
-                    </div>
-                    <div class="w3-section">
-                        <label>Message</label>
-                        <input class="w3-input w3-border" type="text" name="Message" required>
-                    </div>
-                    <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
-                </form>
-            </div>-->
+            <!--            <div class="w3-container w3-padding-large w3-grey">
+                            <h4 id="contact"><b>Contact us</b></h4>
+                            <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
+                                <div class="w3-third w3-dark-grey">
+                                    <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
+                                    <p>email@email.com</p>
+                                </div>
+                                <div class="w3-third w3-teal">
+                                    <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
+                                    <p>Chicago, US</p>
+                                </div>
+                                <div class="w3-third w3-dark-grey">
+                                    <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
+                                    <p>512312311</p>
+                                </div>
+                            </div>
+                            <hr class="w3-opacity">
+                            <form action="/action_page.php" target="_blank">
+                                <div class="w3-section">
+                                    <label>Name</label>
+                                    <input class="w3-input w3-border" type="text" name="Name" required>
+                                </div>
+                                <div class="w3-section">
+                                    <label>Email</label>
+                                    <input class="w3-input w3-border" type="text" name="Email" required>
+                                </div>
+                                <div class="w3-section">
+                                    <label>Message</label>
+                                    <input class="w3-input w3-border" type="text" name="Message" required>
+                                </div>
+                                <button type="submit" class="w3-button w3-black w3-margin-bottom"><i class="fa fa-paper-plane w3-margin-right"></i>Send Message</button>
+                            </form>
+                        </div>-->
 
             <!-- Footer -->
             <footer class="w3-container w3-padding-32 w3-dark-grey">
