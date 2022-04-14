@@ -84,7 +84,7 @@ const getTrips = async () => {
                                                             <input class="trip_input" type="text" name ="trip_price" placeholder="Trip Price:"/>
                                                             <input class="trip_input" type="text" name ="trip_startLocation" placeholder="Trip Start Location:"/>
                                                             <input class="trip_input" type="text" name ="trip_endLocation" placeholder="Trip End Location:"/>
-                                                            <button class="trip_button" type="submit" onclick="editing(event,'${index}','${id}')" type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                                                            <button class="trip_button" type="submit" onclick="editing(event,'${index}','${id}')" class="btn btn-default" data-dismiss="modal">Submit</button>
                                                         </form>
                                                         
                                                       </div>
