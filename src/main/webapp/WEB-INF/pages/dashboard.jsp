@@ -13,5 +13,19 @@
     </head>
     <body>
         <h1>Dashboard</h1>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="resources/js/alert.js"></script>
+
+        <script>
+            const account = JSON.parse(localStorage.getItem("account"));
+//                    Alert({message: account.role})
+            if (!account)
+                window.location.href = "http://localhost:8080/SpringDemo/"
+            if (account.role === "customer")
+                window.location.href = "http://localhost:8080/SpringDemo/home"
+
+        </script>
     </body>
 </html>

@@ -5,7 +5,6 @@
 package com.SpringDemo.controllers;
 
 //import com.SpringDemo.pojo.User;
-import static com.SpringDemo.controllers.BusController.res;
 import com.SpringDemo.pojo.Buses;
 import com.SpringDemo.pojo.Trips;
 import com.SpringDemo.pojo.Users;

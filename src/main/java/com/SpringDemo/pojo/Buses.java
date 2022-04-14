@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Buses.findById", query = "SELECT b FROM Buses b WHERE b.id = :id"),
     @NamedQuery(name = "Buses.findByName", query = "SELECT b FROM Buses b WHERE b.name = :name"),
     @NamedQuery(name = "Buses.findByLocation", query = "SELECT b FROM Buses b WHERE b.location = :location"),
-    @NamedQuery(name = "Buses.findByTime", query = "SELECT b FROM Buses b WHERE b.time = :time"),
+    @NamedQuery(name = "Buses.findByStartTime", query = "SELECT b FROM Buses b WHERE b.startTime = :startTime"),
     @NamedQuery(name = "Buses.findByCreatedAt", query = "SELECT b FROM Buses b WHERE b.createdAt = :createdAt"),
     @NamedQuery(name = "Buses.findByUpdatedAt", query = "SELECT b FROM Buses b WHERE b.updatedAt = :updatedAt")})
 public class Buses implements Serializable {
@@ -49,9 +49,9 @@ public class Buses implements Serializable {
     @Size(max = 255)
     @Column(name = "location")
     private String location;
-    @Column(name = "time")
+    @Column(name = "start_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date time;
+    private Date startTime;
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
@@ -90,12 +90,12 @@ public class Buses implements Serializable {
         this.location = location;
     }
 
-    public Date getTime() {
-        return time;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
     public Date getCreatedAt() {
