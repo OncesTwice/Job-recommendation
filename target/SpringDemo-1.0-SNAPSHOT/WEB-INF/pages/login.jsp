@@ -59,7 +59,7 @@
                         return document.getElementById("error").style.display = "";
 
                     await localStorage.setItem("account", JSON.stringify(json.data[0]))
-
+                    Alert({success: "Login success!"})
                     window.location.href = "http://localhost:8080/SpringDemo/home"
 
                 }

@@ -30,6 +30,8 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="resources/js/alert.js"></script>
         <script>
                 const register = async (event) => {
                     event.preventDefault()
@@ -59,11 +61,8 @@
                         return document.getElementById("error").style.display = "";
 
                     }
-
+                    Alert({success: "Registered success!"})
                     window.location.href = "http://localhost:8080/SpringDemo/"
-
-
-
                 }
         </script>
     </body>
