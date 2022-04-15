@@ -8,6 +8,9 @@
     <class>com.SpringDemo.pojo.Orders</class>
     <class>com.SpringDemo.pojo.Trips</class>
     <class>com.SpringDemo.pojo.Users</class>
+    <class>com.SpringDemo.pojo.Job</class>
+    <class>com.SpringDemo.pojo.User</class>
+    <class>com.SpringDemo.pojo.Major</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dbase?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

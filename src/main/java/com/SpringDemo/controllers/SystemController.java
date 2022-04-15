@@ -5,7 +5,7 @@
 package com.SpringDemo.controllers;
 
 //import com.SpringDemo.pojo.User;
-import com.SpringDemo.pojo.Users;
+import com.SpringDemo.pojo.User;
 import com.cloudinary.Cloudinary;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -46,18 +46,20 @@ public class SystemController {
     private LocalSessionFactoryBean sessionFactory;
     private JdbcTemplate jdbcTemplate;
 
-    public static HashMap<Integer, Users> mapUser = new HashMap<Integer, Users>();
+    public static HashMap<Integer, User> mapUser = new HashMap<Integer, User>();
 
 //  Session session = sessionFactory.getObject().openSession();
-//  Query queryFindByName = session.createNamedQuery("Users.findById");
+//  Query queryFindByName = session.createNamedQuery("User.findById");
 //  queryFindByName.setParameter("id", 3);
-//  List<Users> listCustomer2 = queryFindByName.getResultList();
-//    Query q = session.createNativeQuery("SELECT * FROM Users");
+//  List<User> listCustomer2 = queryFindByName.getResultList();
+//    Query q = session.createNativeQuery("SELECT * FROM User");
     /* ---------------- CREATE NEW USER ------------------------ */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, String>> createUser(@RequestBody Users user) {
+    public ResponseEntity<Map<String, String>> createUser(@RequestBody User user) {
         System.out.println("123 " + user.getFirstname());
         System.out.println("123 " + user.getLastname());
+        System.out.println("123 " + user.getPhone());
+        System.out.println("123 " + user.getAge());
         System.out.println("123 " + user.getEmail());
         System.out.println("123 " + user.getPassword());
 
@@ -80,9 +82,9 @@ public class SystemController {
         // check db
         Session session = sessionFactory.getObject().openSession();
 
-        Query qEmail = session.createNamedQuery("Users.findByEmail");
+        Query qEmail = session.createNamedQuery("User.findByEmail");
         qEmail.setParameter("email", user.getEmail());
-        List<Users> qEmailResult = qEmail.getResultList();
+        List<User> qEmailResult = qEmail.getResultList();
 
         if (qEmailResult.size() > 0) {
             res.put("message", "Email exist");
@@ -97,14 +99,14 @@ public class SystemController {
         Date date = new Date();
         try {
             Transaction tx = session.beginTransaction();
-            Users u = new Users();
+            User u = new User();
             u.setFirstname(user.getFirstname());
             u.setLastname(user.getLastname());
+            u.setPhone(user.getPhone());
+            u.setAge(user.getAge());
             u.setEmail(user.getEmail());
             u.setPassword(user.getPassword());
-            u.setRole("customer");
-            u.setCreatedAt(date);
-            u.setUpdatedAt(date);
+            u.setRole(2);
 
             session.save(u);
             System.out.println("Successfully data insert in database");
@@ -128,64 +130,64 @@ public class SystemController {
 
     /* ---------------- Login ------------------------ */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<Map<String, List<Users>>> login(@RequestBody Users user) {
+    public ResponseEntity<Map<String, List<User>>> login(@RequestBody User user) {
         System.out.println("123" + user.getEmail());
         System.out.println("123" + user.getPassword());
 
-        Map<String, List<Users>> res = new HashMap<>();
+        Map<String, List<User>> res = new HashMap<>();
 
         // checkdb
         Session session = sessionFactory.getObject().openSession();
 
-        Query qEmail = session.createNamedQuery("Users.findByEmail");
+        Query qEmail = session.createNamedQuery("User.findByEmail");
         qEmail.setParameter("email", user.getEmail());
-        List<Users> qEmailResult = qEmail.getResultList();
+        List<User> qEmailResult = qEmail.getResultList();
 
         if (qEmailResult.size() == 0) {
 //            res.put("message", "Email not Found");
 //            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         }
 
-        for (Users obj : qEmailResult) {
+        for (User obj : qEmailResult) {
             if (!obj.getPassword().equals(user.getPassword())) {
 //                res.put("message", "Password not match");
 //                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
             }
         }
         // check main
-        for (Users obj : qEmailResult) {
+        for (User obj : qEmailResult) {
             obj.setPassword("");
         }
         // res
 //        mapUser.put(user.getId(), user);
         res.put("data", qEmailResult);
-        return new ResponseEntity<Map<String, List<Users>>>(res, HttpStatus.OK);
+        return new ResponseEntity<Map<String, List<User>>>(res, HttpStatus.OK);
     }
 
 
     /* ---------------- UPDATE USER ------------------------ */
-    @RequestMapping(value = "/forgot", method = RequestMethod.PUT)
-    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Users user) {
-        Map<String, String> res = new HashMap<>();
-        Users oldUser = mapUser.get(user.getId());
-        if (oldUser == null) {
-
-            res.put("message", "fail");
-            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-        }
-
-        // replace old user by new user.
-//        mapUser.put(user.getId(), user);
-        res.put("message", "success");
-        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-    }
+//    @RequestMapping(value = "/forgot", method = RequestMethod.PUT)
+//    public ResponseEntity<Map<String, String>> updateUser(@RequestBody User user) {
+//        Map<String, String> res = new HashMap<>();
+//        User oldUser = mapUser.get(user.getId());
+//        if (oldUser == null) {
+//
+//            res.put("message", "fail");
+//            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+//        }
+//
+//        // replace old user by new user.
+////        mapUser.put(user.getId(), user);
+//        res.put("message", "success");
+//        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+//    }
 }
 
-//        Query qEmailPwd = session.createNamedQuery("Users.findByEmail");
+//        Query qEmailPwd = session.createNamedQuery("User.findByEmail");
 //        qEmailPwd.setParameter("id", 3);
-//        List<Users> qEmailPwdResult = qEmailPwd.getResultList();
+//        List<User> qEmailPwdResult = qEmailPwd.getResultList();
 //        System.out.println("qEmailResult: " + qEmailResult.size());
-//        for (Users obj : qEmailResult) {
+//        for (User obj : qEmailResult) {
 //            System.out.println("xxx: " + obj.getEmail() + " " + obj.getPassword());
 //        }
 //        System.out.println("qEmailResult" + qEmailPwdResult);

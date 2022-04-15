@@ -28,6 +28,11 @@ public class BaseControler {
         return "register";
     }
 
+    @RequestMapping("/signup")
+    public String signup() {
+        return "signup";
+    }
+    
     @RequestMapping("/home")
     public String home() {
         return "home";
