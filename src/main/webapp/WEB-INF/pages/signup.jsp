@@ -32,7 +32,7 @@
             <input type="text" id="phone" placeholder="Enter Phone" name="phone" required>
 
             <label for="age"><b>Age</b></label>
-            <input type="number" id="age" placeholder="Enter Age" name="age" required>
+            <input type="text" id="age" placeholder="Enter Age" name="age" required>
 
             <label for="email"><b>Email</b></label>
             <input type="text" id="email" placeholder="Enter Email" name="email" required>
@@ -71,10 +71,10 @@
                             return Alert({error: `Register Fail : Input not valid!`})
                         if (!password || password.length < 5)
                             return Alert({error: `Register Fail : Input not valid!`})
-                        if (!firstname || firstname.length < 4)
-                            return Alert({error: `Register Fail : Input not valid!`})
-                        if (!lastname || lastname.length < 4)
-                            return Alert({error: `Register Fail : Input not valid!`})
+//                        if (!firstname || firstname.length < 4)
+//                            return Alert({error: `Register Fail : Input not valid!`})
+//                        if (!lastname || lastname.length < 4)
+//                            return Alert({error: `Register Fail : Input not valid!`})
                         const _data = {
                             email,
                             password,
@@ -83,6 +83,16 @@
                             phone,
                             age
                         }
+
+//                        const _data = {
+//                            "email": "bao1@gmail.com",
+//                            "password": "123456",
+//                            "phone": "0900000000",
+//                            "age": 22,
+//                            "firstname": "hoang",
+//                            "lastname": "bao"
+//                        }
+                        console.log(_data)
                         const res = await fetch('http://localhost:8080/SpringDemo/register', {
                             method: "POST",
                             body: JSON.stringify(_data),

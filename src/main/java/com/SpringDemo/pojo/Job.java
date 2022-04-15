@@ -5,6 +5,7 @@
 package com.SpringDemo.pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -28,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Job.findAll", query = "SELECT j FROM Job j"),
     @NamedQuery(name = "Job.findById", query = "SELECT j FROM Job j WHERE j.id = :id"),
     @NamedQuery(name = "Job.findByUserId", query = "SELECT j FROM Job j WHERE j.userId = :userId"),
-    @NamedQuery(name = "Job.findByMajorId", query = "SELECT j FROM Job j WHERE j.majorId = :majorId"),
+    @NamedQuery(name = "Job.findByMajor", query = "SELECT j FROM Job j WHERE j.major = :major"),
     @NamedQuery(name = "Job.findByCompany", query = "SELECT j FROM Job j WHERE j.company = :company"),
     @NamedQuery(name = "Job.findByAddress", query = "SELECT j FROM Job j WHERE j.address = :address"),
     @NamedQuery(name = "Job.findByPosition", query = "SELECT j FROM Job j WHERE j.position LIKE :position"),
@@ -36,7 +39,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Job.findBySalary", query = "SELECT j FROM Job j WHERE j.salary = :salary"),
     @NamedQuery(name = "Job.findByNoRecruitments", query = "SELECT j FROM Job j WHERE j.noRecruitments = :noRecruitments"),
     @NamedQuery(name = "Job.findByRequirement", query = "SELECT j FROM Job j WHERE j.requirement = :requirement"),
-    @NamedQuery(name = "Job.findByDescription", query = "SELECT j FROM Job j WHERE j.description = :description")})
+    @NamedQuery(name = "Job.findByDescription", query = "SELECT j FROM Job j WHERE j.description = :description"),
+    @NamedQuery(name = "Job.findByCreatedAt", query = "SELECT j FROM Job j WHERE j.createdAt = :createdAt"),
+    @NamedQuery(name = "Job.findByUpdatedAt", query = "SELECT j FROM Job j WHERE j.updatedAt = :updatedAt")})
 public class Job implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,8 +52,9 @@ public class Job implements Serializable {
     private Integer id;
     @Column(name = "user_id")
     private Integer userId;
-    @Column(name = "major_id")
-    private Integer majorId;
+    @Size(max = 255)
+    @Column(name = "major")
+    private String major;
     @Size(max = 255)
     @Column(name = "company")
     private String company;
@@ -72,6 +78,12 @@ public class Job implements Serializable {
     @Size(max = 500)
     @Column(name = "description")
     private String description;
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
 
     public Job() {
     }
@@ -96,12 +108,12 @@ public class Job implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getMajorId() {
-        return majorId;
+    public String getMajor() {
+        return major;
     }
 
-    public void setMajorId(Integer majorId) {
-        this.majorId = majorId;
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public String getCompany() {
@@ -166,6 +178,22 @@ public class Job implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
