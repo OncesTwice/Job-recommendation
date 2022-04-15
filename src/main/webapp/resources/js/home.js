@@ -62,7 +62,7 @@ const getDetailJob = async (id) => {
     const json = await res.json()
 
     console.log(json)
-    
+
     $("#jobDetail").html(``);
 
     await $.each(json.data, (index, value) => {
@@ -194,35 +194,53 @@ const getDetailJob = async (id) => {
     });
 }
 
-const search = async (event) => {
+const searchJob = async (event) => {
     event.preventDefault()
+//    alert(123)
 
     const kw = document.getElementById("kw").value
 
-    const res = await fetch(`http://localhost:8080/SpringDemo/trips/search/` + kw, {
+    const res = await fetch(`http://localhost:8080/SpringDemo/job/search/` + kw, {
         method: "GET"
     })
     const json = await res.json()
 
     console.log(json)
 
-
-    $("#listTrip").html(``);
+    $("#listJob").html(``);
 
     await $.each(json.data, (index, value) => {
-        const {id, img, price, name, startLocation, endLocation} = value
+        const {address, company, description, experience, id, majorId, noRecruitments, position, requirement, salary, userId} = value
 
-        var html = `<div class='grid-item'>
-                        <img class='trip_img' src='resources/images/` + img + `' alt=` + name + `/>
-                        <div class='w3-container w3-white trip_frame'>
-                        <p class="trip_name">` + name + `</p>
-                        <p class="trip_start"><span class="trip_field">Start:</span> ` + startLocation + `</p>
-                        <p class="trip_end"><span class="trip_field">End:</span> ` + endLocation + `</p>
-                        <p class="trip_price"><span class="trip_field">Ticket price:</span> ` + price + `</p>
-                        <button class='trip_booking' onclick='booking(` + id + `)'>Book</button>
+        var html = `<div style="cursor: pointer;" class="list-group-item" onclick="getDetailJob('${id}')">
+                            <table class="jobInfo">
+                                <tbody>
+                                    <tr>
+                                        <td class="up">
+                                            <div class="heading">
+                                                <h2 class="jobTitle">
+                                                    <span title="Nhân viên bán hàng tại Showroom">${position}
+                                                    </span>
+                                                </h2>
+                                            </div>
+                                            <div class="companyInfo">
+                                                <span class="companyTitle">${company}</span>
+                                                <br />
+                                                <span class="companyLocation">${address}</span>
+                                            </div>
+
+                                            <div class="salary">
+                                                <span>${salary}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            
                         </div>
-                    </div>`
-        $("#listTrip").append(html);
+                      `
+        $("#listJob").prepend(html);
     });
 }
 

@@ -58,19 +58,20 @@
                       <button type="submit" class="btn">Submit</button>
                     </div> -->
 
-                    <form class="navbar-form navbar-left" action="/action_page.php">
-                        <div class="form-group">
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Search"
-                                name="search"
-                                />
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
                 </ul>
 
+                <form class="navbar-form navbar-left" onsubmit="searchJob(event)" >
+
+                    <input
+                        type="text"
+                        id="kw"
+                        class="form-control"
+                        placeholder="Search"
+                        name="search"
+                        />
+
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
                 <!-- <ul class="nav navbar-nav navbar-right">
                   <li>
                     <a href="/Html/signup.html"
@@ -94,7 +95,7 @@
 
                 <div class="list">
                     <div class="list-group" id="listJob">
-                        
+
                         <div style="cursor: pointer;" class="list-group-item">
                             <table class="jobInfo">
                                 <tbody>
@@ -136,9 +137,9 @@
                                 </tbody>
                             </table>
                         </div>
-                      
+
                     </div>
-                   
+
                 </div>
             </div>
 
@@ -156,13 +157,13 @@
                                 <span>Thành Phố Hồ Chí Minh</span>
                             </div>
 
-<!--                            <div class="salary">
-                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                            </div>-->
+                            <!--                            <div class="salary">
+                                                            <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
+                                                        </div>-->
 
-<!--                            <div class="apply">
-                                <a href="">Nộp đơn</a>
-                            </div>-->
+                            <!--                            <div class="apply">
+                                                            <a href="">Nộp đơn</a>
+                                                        </div>-->
                         </div>
 
                         <div class="detailFooter">
