@@ -565,7 +565,7 @@
 
         <script>
             const getJobs = async () => {
-                alert(123)
+//                alert(123)
             }
 
             getJobs()
