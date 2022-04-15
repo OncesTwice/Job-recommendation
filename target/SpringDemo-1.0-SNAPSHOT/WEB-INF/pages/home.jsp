@@ -382,15 +382,15 @@
                             </table>
                         </a>
                     </div>
-<!--                    <div class="page">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>-->
+                    <!--                    <div class="page">
+                                            <ul class="pagination">
+                                                <li><a href="#">1</a></li>
+                                                <li class="active"><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                            </ul>
+                                        </div>-->
                 </div>
             </div>
 
@@ -398,7 +398,7 @@
             <div class="right">
                 <div class="rightContent">
                     <!--<div class="detail_fake"></div>-->
-                    
+
                     <div class="detail">
                         <div class="detailHead">
                             <div class="job_title">Nhân viên bán hàng tại Showroom</div>
@@ -554,10 +554,21 @@
                             </div>
                         </div>
                     </div>
-                
+
                 </div>
             </div>
         </div>
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="resources/js/alert.js"></script>
+
+        <script>
+            const getJobs = async () => {
+                alert(123)
+            }
+
+            getJobs()
+        </script>
     </body>
 </html>
