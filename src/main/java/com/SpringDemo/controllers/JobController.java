@@ -87,18 +87,17 @@ public class JobController {
         return new ResponseEntity<Map<String, List<Job>>>(res, HttpStatus.OK);
     }
 
-//    @RequestMapping(value = "/job/search/{name}", method = RequestMethod.GET)
-//    public ResponseEntity<Map<String, List<Job>>> getJobByName(@PathVariable String name) {
-//        Session session = sessionFactory.getObject().openSession();
-//        Query q = session.createNamedQuery("Job.findByName");
-//        q.setParameter("name", '%' + name + '%');
-//        List<Job> listJob = q.getResultList();
-//
-//
-//        res.put("data", listJob);
-//
-//        return new ResponseEntity<Map<String, List<Job>>>(res, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/job/search/{position}", method = RequestMethod.GET)
+    public ResponseEntity<Map<String, List<Job>>> getJobByName(@PathVariable String position) {
+        Session session = sessionFactory.getObject().openSession();
+        Query q = session.createNamedQuery("Job.findByPosition");
+        q.setParameter("position", '%' + position + '%');
+        List<Job> listJob = q.getResultList();
+
+        res.put("data", listJob);
+
+        return new ResponseEntity<Map<String, List<Job>>>(res, HttpStatus.OK);
+    }
 //
 //    @RequestMapping(value = "/job/create", method = RequestMethod.POST)
 //    public ResponseEntity<Map<String, String>> createJob(@RequestBody Job job) {

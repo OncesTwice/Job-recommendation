@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Job.findByMajorId", query = "SELECT j FROM Job j WHERE j.majorId = :majorId"),
     @NamedQuery(name = "Job.findByCompany", query = "SELECT j FROM Job j WHERE j.company = :company"),
     @NamedQuery(name = "Job.findByAddress", query = "SELECT j FROM Job j WHERE j.address = :address"),
-    @NamedQuery(name = "Job.findByPosition", query = "SELECT j FROM Job j WHERE j.position = :position"),
+    @NamedQuery(name = "Job.findByPosition", query = "SELECT j FROM Job j WHERE j.position LIKE :position"),
     @NamedQuery(name = "Job.findByExperience", query = "SELECT j FROM Job j WHERE j.experience = :experience"),
     @NamedQuery(name = "Job.findBySalary", query = "SELECT j FROM Job j WHERE j.salary = :salary"),
     @NamedQuery(name = "Job.findByNoRecruitments", query = "SELECT j FROM Job j WHERE j.noRecruitments = :noRecruitments"),
