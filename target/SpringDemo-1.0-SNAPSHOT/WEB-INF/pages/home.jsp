@@ -93,8 +93,9 @@
                 </div>
 
                 <div class="list">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item">
+                    <div class="list-group" id="listJob">
+                        
+                        <div style="cursor: pointer;" class="list-group-item">
                             <table class="jobInfo">
                                 <tbody>
                                     <tr>
@@ -134,263 +135,10 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <table class="jobInfo">
-                                <tbody>
-                                    <tr>
-                                        <td class="up">
-                                            <div class="heading">
-                                                <h2 class="jobTitle">
-                                                    <span title="Nhân viên bán hàng tại Showroom"
-                                                          >Nhân viên bán hàng tại Showroom
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                            <div class="companyInfo">
-                                                <span class="companyTitle">Công Ty TNHH Cock</span>
-                                                <br />
-                                                <span class="companyLocation"
-                                                      >Thành Phố Hồ Chí Minh</span
-                                                >
-                                            </div>
-
-                                            <div class="salary">
-                                                <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <table class="jobRequire">
-                                <tbody>
-                                    <tr>
-                                        <td class="down">
-                                            <div class="require">
-                                                <li>Chăm sóc khách hàng</li>
-                                                <li>Yêu thích công việc</li>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
+                        </div>
+                      
                     </div>
-                    <!--                    <div class="page">
-                                            <ul class="pagination">
-                                                <li><a href="#">1</a></li>
-                                                <li class="active"><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                            </ul>
-                                        </div>-->
+                   
                 </div>
             </div>
 
@@ -399,22 +147,22 @@
                 <div class="rightContent">
                     <!--<div class="detail_fake"></div>-->
 
-                    <div class="detail">
+                    <div class="detail" id="jobDetail">
                         <div class="detailHead">
-                            <div class="job_title">Nhân viên bán hàng tại Showroom</div>
+                            <div class="job_title">Nhân viên bán hàng tại Showroom (Ví d?)</div>
 
                             <div class="companyInfo">
                                 <span>Công Ty TNHH Cock</span><br />
                                 <span>Thành Phố Hồ Chí Minh</span>
                             </div>
 
-                            <div class="salary">
+<!--                            <div class="salary">
                                 <span>7.000.000 VNĐ - 10.000.000 VNĐ một tháng</span>
-                            </div>
+                            </div>-->
 
-                            <div class="apply">
+<!--                            <div class="apply">
                                 <a href="">Nộp đơn</a>
-                            </div>
+                            </div>-->
                         </div>
 
                         <div class="detailFooter">
@@ -562,13 +310,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="resources/js/alert.js"></script>
+        <script src="resources/js/home.js"></script>
 
-        <script>
-            const getJobs = async () => {
-//                alert(123)
-            }
-
-            getJobs()
-        </script>
     </body>
 </html>
