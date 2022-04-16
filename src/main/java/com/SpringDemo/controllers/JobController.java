@@ -5,8 +5,6 @@
 package com.SpringDemo.controllers;
 
 //import com.SpringDemo.pojo.User;
-
-
 import com.SpringDemo.pojo.Job;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -54,7 +52,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 public class JobController {
 
@@ -80,7 +77,6 @@ public class JobController {
         Query q = session.createNamedQuery("Job.findById");
         q.setParameter("id", id);
         List<Job> listJob = q.getResultList();
-
 
         res.put("data", listJob);
 
@@ -164,25 +160,45 @@ public class JobController {
 //        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
 //    }
 //
-//    @RequestMapping(value = "/job/update", method = RequestMethod.PUT)
-//    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Job job) {
-//        System.out.println(job.getId());
-//        Date date = new Date();
-//        Session session = sessionFactory.getObject().openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.createNativeQuery("UPDATE job SET name=?,price=?,start_location = ?, end_location=?,updated_at=? WHERE id = ?")
-//                .setParameter(1, job.getName())
-//                .setParameter(2, job.getPrice())
-//                .setParameter(3, job.getStartLocation())
-//                .setParameter(4, job.getEndLocation())
-//                .setParameter(5, date)
-//                .setParameter(6, job.getId())
+
+    @RequestMapping(value = "/job/update", method = RequestMethod.PUT)
+    public ResponseEntity<Map<String, String>> updateUser(@RequestBody Job job) {
+        System.out.println(job.getId());
+        Date date = new Date();
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+//        session.createNativeQuery("UPDATE job SET major=?, company=?, address= ?, position=?, experience=?, salary=?, requirement=?, description=?, updatedAt=? WHERE id = ?")
+//                .setParameter(1, job.getMajor())
+//                .setParameter(2, job.getCompany())
+//                .setParameter(3, job.getAddress())
+//                .setParameter(4, job.getPosition())
+//                .setParameter(5, job.getExperience())
+//                .setParameter(6, job.getSalary())
+////                .setParameter(7, job.getNoRecruitments())
+//                .setParameter(7, job.getRequirement())
+//                .setParameter(8, job.getDescription())
+//                .setParameter(9, date)
+//                .setParameter(10, job.getId())
 //                .executeUpdate();
-//
-//        tx.commit();
-//
-//        Map<String, String> res = new HashMap<>();
-//        res.put("message", "success");
-//        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-//    }
+
+        session.createNativeQuery("UPDATE job SET major=?, company=?, address= ?, position=?, experience=?, salary=?, requirement=?, description=?, updated_at=?, no_recruitments=?  WHERE id = ?")
+                .setParameter(1, job.getMajor())
+                .setParameter(2, job.getCompany())
+                .setParameter(3, job.getAddress())
+                .setParameter(4, job.getPosition())
+                .setParameter(5, job.getExperience())
+                .setParameter(6, job.getSalary())
+                .setParameter(7, job.getRequirement())
+                .setParameter(8, job.getDescription())
+                .setParameter(9, date)
+                .setParameter(10, job.getNoRecruitments())
+                .setParameter(11, job.getId())
+                .executeUpdate();
+
+        tx.commit();
+
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+    }
 }
