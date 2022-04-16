@@ -144,21 +144,21 @@ public class JobController {
 //        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
 //    }
 //
-//    @RequestMapping(value = "/job/delete/{id}", method = RequestMethod.DELETE)
-//    public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
-//        System.out.println(id);
-//        Session session = sessionFactory.getObject().openSession();
-//        Transaction tx = session.beginTransaction();
-//        session.createNativeQuery("DELETE FROM job WHERE id = ?")
-//                .setParameter(1, id)
-//                .executeUpdate();
-//
-//        tx.commit();
-//
-//        Map<String, String> res = new HashMap<>();
-//        res.put("message", "success");
-//        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-//    }
+    @RequestMapping(value = "/job/delete/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
+        System.out.println(id);
+        Session session = sessionFactory.getObject().openSession();
+        Transaction tx = session.beginTransaction();
+        session.createNativeQuery("DELETE FROM job WHERE id = ?")
+                .setParameter(1, id)
+                .executeUpdate();
+
+        tx.commit();
+
+        Map<String, String> res = new HashMap<>();
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+    }
 //
 
     @RequestMapping(value = "/job/update", method = RequestMethod.PUT)

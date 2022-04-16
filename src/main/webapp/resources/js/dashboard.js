@@ -58,7 +58,7 @@ const getUsers = async () => {
                             </div>
                         </td>
                         <td>
-                            <button type="button" onclick="deleteUser('${id}')">Delete</button>
+                            <button type="button" onclick="deleteJob('${id}')">Delete</button>
                             
                         </td>
                     </tr>
@@ -125,7 +125,41 @@ const editJob = async (event, index, id) => {
 
 }
 
+const deleteJob = async  (id) => {
+    console.log(id, account.id)
+    const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    })
 
+    if (!result.isConfirmed)
+        return
+
+//    const _data = {
+//        "priceThisTime": price,
+//        "nameThisTime": name,
+//        "userId": account.id,
+//        "busId": 1,
+//        "tripId": id
+//    }
+
+    const res = await fetch('http://localhost:8080/SpringDemo/job/delete/' + id, {
+        method: "DELETE",
+//        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const json = await res.json()
+
+    Alert({success: "Success"})
+    window.location.reload();
+    console.log(json)
+
+}
 
 const logout = async () => {
     const result = await Swal.fire({
