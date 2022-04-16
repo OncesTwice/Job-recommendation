@@ -4,7 +4,7 @@
  */
 
 const account = JSON.parse(localStorage.getItem("account"));
-
+document.getElementById("account_firstname").innerHTML = `${account.firstname} ${account.lastname}`
 
 
 const getJobs = async () => {

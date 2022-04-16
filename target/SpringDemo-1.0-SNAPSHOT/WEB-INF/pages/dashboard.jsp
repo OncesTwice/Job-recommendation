@@ -67,19 +67,24 @@
 
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <!-- <ul class="nav navbar-nav navbar-right">
+                 <ul class="nav navbar-nav navbar-right">
                   <li>
-                    <a href="/Html/signup.html"
+                    <a href="#" id="account_firstname"
                       ><span class="glyphicon glyphicon-user"></span> Sign Up</a
                     >
                   </li>
                   <li>
-                    <a href="/Html/login.html"
-                      ><span class="glyphicon glyphicon-log-in"></span> Login</a
+                    <a href="#" onclick="logout()"
+                      ><span class="glyphicon glyphicon-log-in"></span> Logout</a
                     >
                   </li>
-                </ul> -->
+                </ul> 
             </div>
         </nav>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="resources/js/alert.js"></script>
+        <script src="resources/js/dashboard.js"></script>
     </body>
 </html>

@@ -72,18 +72,14 @@
 
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
-                <!-- <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="/Html/signup.html"
-                      ><span class="glyphicon glyphicon-user"></span> Sign Up</a
-                    >
-                  </li>
-                  <li>
-                    <a href="/Html/login.html"
-                      ><span class="glyphicon glyphicon-log-in"></span> Login</a
-                    >
-                  </li>
-                </ul> -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" id="account_firstname"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>                  
+                    <li>
+                        <a href="#" onclick="logout()"><span  class="glyphicon glyphicon-log-in"></span> Logout</a>
+                    </li>
+                </ul> 
             </div>
         </nav>
 
