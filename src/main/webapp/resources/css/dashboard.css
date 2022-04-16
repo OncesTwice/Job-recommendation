@@ -4,7 +4,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 /* 
     Created on : Apr 12, 2022, 5:58:58 PM
-    Author     : Kien Mason
+    Author     : 
 */
 
 *{
@@ -13,25 +13,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 body{
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
+/*     display: flex; 
+     align-items: center; 
+     justify-content: center; */
 
 }
 
 
 .container-fluid{
-    /* display: flex; */
+     /*display: flex;*/ 
     text-align: center;
 
 }
 
 
 .imgcontainer{
-    /*    width: 50px;
-        height: 50px;*/
-    /* text-align: center; */
-    /* margin: 24px 0 12px 0; */
+/*        width: 50px;
+        height: 50px;
+     text-align: center; 
+     margin: 24px 0 12px 0; */
 }
 
 .avatar{
@@ -167,4 +167,11 @@ body{
 
 .detailHead{
     /*border-bottom: 1px solid black;*/
+}
+
+.chart{
+     display: flex;
+    text-align: center;
+    justify-content: center;
+    
 }
