@@ -114,7 +114,7 @@ public class SystemController {
             tx.commit();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            res.put("message", "fail");
+            res.put("message", e.getMessage());
             return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
         } finally {
             session.close();
@@ -135,7 +135,7 @@ public class SystemController {
         System.out.println("123" + user.getEmail());
         System.out.println("123" + user.getPassword());
 
-        Map<String, List<User>> res = new HashMap<>();
+        Map<String, List<User>> res1 = new HashMap<>();
 
         // checkdb
         Session session = sessionFactory.getObject().openSession();
@@ -151,8 +151,8 @@ public class SystemController {
 
         for (User obj : qEmailResult) {
             if (!obj.getPassword().equals(user.getPassword())) {
-                res.put("message", "Password not match");
-                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+//                res1.put("message", "Password not match");
+//                return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
             }
         }
         // check main
@@ -161,8 +161,8 @@ public class SystemController {
         }
         // res
 //        mapUser.put(user.getId(), user);
-        res.put("data", qEmailResult);
-        return new ResponseEntity<Map<String, List<User>>>(res, HttpStatus.OK);
+        res1.put("data", qEmailResult);
+        return new ResponseEntity<Map<String, List<User>>>(res1, HttpStatus.OK);
     }
 
 

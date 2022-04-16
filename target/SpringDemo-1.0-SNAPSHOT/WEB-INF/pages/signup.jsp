@@ -76,12 +76,12 @@
 //                        if (!lastname || lastname.length < 4)
 //                            return Alert({error: `Register Fail : Input not valid!`})
                         const _data = {
-                            email,
-                            password,
                             firstname,
                             lastname,
                             phone,
-                            age
+                            age: Number(age),
+                            email,
+                            password
                         }
 
 //                        const _data = {
