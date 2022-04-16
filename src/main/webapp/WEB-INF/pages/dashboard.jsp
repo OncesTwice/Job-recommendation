@@ -54,7 +54,7 @@
 
                 </ul>
 
-                <form class="navbar-form navbar-left" onsubmit="searchJob(event)" >
+<!--                <form class="navbar-form navbar-left" onsubmit="searchJob(event)" >
 
                     <input
                         type="text"
@@ -65,7 +65,7 @@
                         />
 
                     <button type="submit" class="btn btn-default">Submit</button>
-                </form>
+                </form>-->
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <a href="#" id="account_firstname"
@@ -130,7 +130,9 @@
 
                 </tbody>
             </table>
+
             <h2>Users Features</h2>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -140,24 +142,25 @@
                         <th>Age</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Password</th>
                         <th>Role</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Hoàng Bảo</td>
-                        <td>Lê</td>
-                        <td>22</td>
-                        <td>bao@gmail.com</td>
-                        <td>09010909501</td>
-                        <td>123456</td>
-                        <td>1</td>
-
-
-
-                    </tr>
+                <tbody id="listUser">
+                    <!--                    <tr>
+                                            <td>1</td>
+                                            <td>Hoàng Bảo</td>
+                                            <td>Lê</td>
+                                            <td>22</td>
+                                            <td>bao@gmail.com</td>
+                                            <td>09010909501</td>
+                                            <td>123456</td>
+                                            <td>1</td>
+                    
+                    
+                    
+                                        </tr>-->
                     <!--                    <tr>
                                             <td>Mary</td>
                                             <td>Moe</td>
@@ -176,6 +179,7 @@
 
                 </tbody>
             </table>
+
             <div  class="chart">
                 <canvas id="myChart" style="width:100%;max-width:80%"></canvas>
             </div>
@@ -189,32 +193,7 @@
         <script src="resources/js/alert.js"></script>
         <script src="resources/js/dashboard.js"></script>
         <script>
-                                var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-                                var yValues = [55, 49, 44, 24, 15];
-                                var barColors = [
-                                    "#b91d47",
-                                    "#00aba9",
-                                    "#2b5797",
-                                    "#e8c3b9",
-                                    "#1e7145"
-                                ];
 
-                                new Chart("myChart", {
-                                    type: "pie",
-                                    data: {
-                                        labels: xValues,
-                                        datasets: [{
-                                                backgroundColor: barColors,
-                                                data: yValues
-                                            }]
-                                    },
-                                    options: {
-                                        title: {
-                                            display: true,
-                                            text: "Job Analyzing"
-                                        }
-                                    }
-                                });
         </script>
     </body>
 </html>

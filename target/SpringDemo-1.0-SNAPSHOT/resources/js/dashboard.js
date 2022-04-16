@@ -20,7 +20,7 @@ const getJobs = async () => {
     $("#listJobs").html(``);
 
     await $.each(json.data, (index, value) => {
-        const  {address, company, description, experience, id, major, noRecruitments, position, requirement, salary, userId,createdAt,updatedAt} = value
+        const  {address, company, description, experience, id, major, noRecruitments, position, requirement, salary, userId, createdAt, updatedAt} = value
 
         var html = `<tr>
                         <th scope="row"> ${id} </th>
@@ -67,6 +67,9 @@ const getJobs = async () => {
                     `
         $("#listJobs").prepend(html);
     });
+
+    const jsonASC = json.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    chart(jsonASC)
 }
 
 getJobs()
@@ -94,7 +97,7 @@ const editJob = async (event, index, id) => {
         position,
         experience,
         salary,
-        noRecruitments:Number(noRecruitments),
+        noRecruitments: Number(noRecruitments),
         requirement,
         description
     }
@@ -111,7 +114,7 @@ const editJob = async (event, index, id) => {
 //        "requirement": "1",
 //        "description": "1"
 //    }
-    
+
     console.log(_data);
 
     const res = await fetch('http://localhost:8080/SpringDemo/job/update/', {
@@ -163,11 +166,11 @@ const deleteJob = async  (id) => {
 
 }
 
-const addJob = async (event)=>{
+const addJob = async (event) => {
     event.preventDefault()
 
     let myForm = document.getElementById(`addJobForm`);
-    
+
     let formData = new FormData(myForm);
     const major = formData.get("add_major");
     const company = formData.get("add_company");
@@ -186,11 +189,11 @@ const addJob = async (event)=>{
         position,
         experience,
         salary,
-        noRecruitments:Number(noRecruitments),
+        noRecruitments: Number(noRecruitments),
         requirement,
         description
     }
-    
+
     console.log(_data);
 
     const res = await fetch('http://localhost:8080/SpringDemo/job/create/', {
@@ -200,7 +203,8 @@ const addJob = async (event)=>{
     })
     const json = await res.json()
 
-    if(json.message!=="success") return Alert({error: json.message})
+    if (json.message !== "success")
+        return Alert({error: json.message})
 
     Alert({success: "Success"})
     window.location.reload();
@@ -223,3 +227,72 @@ const logout = async () => {
     localStorage.removeItem("account")
     window.location.href = "http://localhost:8080/SpringDemo/"
 }
+
+const chart = (json) => {
+    console.log(`jsonASC`, json)
+    var xValues = json.map(x => x.company);
+    var yValues = json.map(x => x.noRecruitments);
+    
+    console.log(xValues,yValues)
+    var barColors = [
+        "red",
+        "blue",
+        "yellow",
+        "green",
+        "gray",
+        "pink",
+        "magenta"
+    ];
+
+    new Chart("myChart", {
+        type: "pie",
+        data: {
+            labels: xValues,
+            datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "Job Analyzing Recruitments"
+            }
+        }
+    });
+}
+
+const getUsers = async () => {
+    const res = await fetch(`http://localhost:8080/SpringDemo/user/all`, {
+        method: "GET",
+//                        body: JSON.stringify(_data),
+//                                    headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const json = await res.json()
+
+    console.log(json)
+
+
+    $("#listUser").html(``);
+
+    await $.each(json.data, (index, value) => {
+        const {id, firstname, lastname, email, updatedAt, role, phone, age, createdAt} = value
+
+        var html = `<tr>
+                        <td>${id}</td>
+                        <td>${firstname}</td>
+                        <td>${lastname}</td>
+                        <td>${age}</td>
+                        <td>${email}</td>
+                        <td>${phone}</td>                        
+                        <td>${role}</td>
+                        <td>${createdAt}</td>
+                        <td>${updatedAt}</td>
+
+                    </tr>`
+        $("#listUser").prepend(html);
+    });
+
+}
+
+getUsers()

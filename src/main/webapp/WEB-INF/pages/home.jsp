@@ -35,7 +35,7 @@
                     <li class="active">
                         <a href="#" style="background-color: #183260">Home</a>
                     </li>
-                    <li class="dropdown">
+<!--                    <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"
                            >Page 1 <span class="caret"></span
                             ></a>
@@ -45,7 +45,7 @@
                             <li><a href="#">Page 1-3</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Page 2</a></li>
+                    <li><a href="#">Page 2</a></li>-->
                     <!-- <div class="search">
                       <div>
                         <input
@@ -146,7 +146,7 @@
 
                     <div class="detail" id="jobDetail">
                         <div class="detailHead">
-                            <div class="job_title">Nhân viên bán hàng tại Showroom (Ví d?)</div>
+                            <div class="job_title">Nhân viên bán hàng tại Showroom (Ví dụ)</div>
 
                             <div class="companyInfo">
                                 <span>Công Ty TNHH Cock</span><br />
