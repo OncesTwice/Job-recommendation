@@ -117,6 +117,8 @@
                         <th>Company</th>
                         <th>Major</th>
                         <th>Position</th>
+                        <th>Created At</th>
+                        <th>Updated at</th>
                     </tr>
                 </thead>
                 <tbody id="listJobs">

@@ -95,18 +95,15 @@ public class JobController {
         return new ResponseEntity<Map<String, List<Job>>>(res, HttpStatus.OK);
     }
 //
-//    @RequestMapping(value = "/job/create", method = RequestMethod.POST)
-//    public ResponseEntity<Map<String, String>> createJob(@RequestBody Job job) {
-//        System.out.println("123 " + job.getName());
-//        System.out.println("123 " + job.getPrice());
-//        System.out.println("123 " + job.getStartLocation());
-//        System.out.println("123 " + job.getEndLocation());
-//
-//        Map<String, String> res = new HashMap<>();
-//
-//        // check db
-//        Session session = sessionFactory.getObject().openSession();
-//
+
+    @RequestMapping(value = "/job/create", method = RequestMethod.POST)
+    public ResponseEntity<Map<String, String>> createJob(@RequestBody Job job) {
+
+        Map<String, String> res = new HashMap<>();
+
+        // check db
+        Session session = sessionFactory.getObject().openSession();
+
 //        Query qEmail = session.createNamedQuery("Job.findByName");
 //        qEmail.setParameter("name", job.getName());
 //        List<Job> qEmailResult = qEmail.getResultList();
@@ -115,35 +112,40 @@ public class JobController {
 //            res.put("message", "job exist");
 //            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
 //        }
+        // check main
+        Date date = new Date();
+        try {
+            Transaction tx = session.beginTransaction();
+            Job u = new Job();
+            u.setMajor(job.getMajor());
+            u.setCompany(job.getCompany());
+            u.setAddress(job.getAddress());
+            u.setPosition(job.getPosition());
+            u.setExperience(job.getExperience());
+            u.setSalary(job.getSalary());
+            u.setNoRecruitments(job.getNoRecruitments());
+            u.setRequirement(job.getRequirement());
+            u.setDescription(job.getDescription());
+
+            u.setCreatedAt(date);
+            u.setUpdatedAt(date);
+
+            session.save(u);
+            System.out.println("Successfully data insert in database");
+            tx.commit();
+        } catch (Exception e) {
+            res.put("message", e.getMessage());
+            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+        } finally {
+            session.close();
+        }
+
+        // res
+        res.put("message", "success");
+        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
+    }
 //
-//        // check main
-//        Date date = new Date();
-//        try {
-//            Transaction tx = session.beginTransaction();
-//            Job u = new Job();
-//            u.setName(job.getName());
-//            u.setPrice(job.getPrice());
-//            u.setImg("default.png");
-//            u.setStartLocation(job.getStartLocation());
-//            u.setEndLocation(job.getEndLocation());
-//            u.setCreatedAt(date);
-//            u.setUpdatedAt(date);
-//
-//            session.save(u);
-//            System.out.println("Successfully data insert in database");
-//            tx.commit();
-//        } catch (Exception e) {
-//            res.put("message", e.getMessage());
-//            return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-//        } finally {
-//            session.close();
-//        }
-//
-//        // res
-//        res.put("message", "success");
-//        return new ResponseEntity<Map<String, String>>(res, HttpStatus.OK);
-//    }
-//
+
     @RequestMapping(value = "/job/delete/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Map<String, String>> deleteUserById(@PathVariable int id) {
         System.out.println(id);

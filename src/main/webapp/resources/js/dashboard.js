@@ -6,7 +6,7 @@
 const account = JSON.parse(localStorage.getItem("account"));
 document.getElementById("account_firstname").innerHTML = `${account.firstname} ${account.lastname}`
 
-const getUsers = async () => {
+const getJobs = async () => {
     const res = await fetch(`http://localhost:8080/SpringDemo/job/all`, {
         method: "GET",
 //                        body: JSON.stringify(_data),
@@ -20,13 +20,15 @@ const getUsers = async () => {
     $("#listJobs").html(``);
 
     await $.each(json.data, (index, value) => {
-        const  {address, company, description, experience, id, major, noRecruitments, position, requirement, salary, userId} = value
+        const  {address, company, description, experience, id, major, noRecruitments, position, requirement, salary, userId,createdAt,updatedAt} = value
 
         var html = `<tr>
                         <th scope="row"> ${id} </th>
                         <td>${company}</td>
                         <td>${major}</td>
                         <td>${position}</td>
+                        <td>${createdAt}</td>
+                        <td>${updatedAt}</td>
         
                         <td>
                             <button data-toggle="modal" data-target="#editJobModal${index}">Edit</button>
@@ -67,7 +69,7 @@ const getUsers = async () => {
     });
 }
 
-getUsers()
+getJobs()
 
 const editJob = async (event, index, id) => {
     event.preventDefault()
@@ -159,6 +161,50 @@ const deleteJob = async  (id) => {
     window.location.reload();
     console.log(json)
 
+}
+
+const addJob = async (event)=>{
+    event.preventDefault()
+
+    let myForm = document.getElementById(`addJobForm`);
+    
+    let formData = new FormData(myForm);
+    const major = formData.get("add_major");
+    const company = formData.get("add_company");
+    const address = formData.get("add_address");
+    const position = formData.get("add_position");
+    const experience = formData.get("add_experience");
+    const salary = formData.get("add_salary");
+    const noRecruitments = formData.get("add_recruitments");
+    const requirement = formData.get("add_requirement");
+    const description = document.getElementById(`add_description`).value;
+
+    const _data = {
+        major,
+        company,
+        address,
+        position,
+        experience,
+        salary,
+        noRecruitments:Number(noRecruitments),
+        requirement,
+        description
+    }
+    
+    console.log(_data);
+
+    const res = await fetch('http://localhost:8080/SpringDemo/job/create/', {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json;charset=UTF-8"}
+    })
+    const json = await res.json()
+
+    if(json.message!=="success") return Alert({error: json.message})
+
+    Alert({success: "Success"})
+    window.location.reload();
+    console.log(json)
 }
 
 const logout = async () => {
