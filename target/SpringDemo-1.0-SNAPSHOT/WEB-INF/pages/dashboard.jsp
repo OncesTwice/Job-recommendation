@@ -82,8 +82,34 @@
         </nav>
 
         <div class="table">
-            <h2>Striped Rows</h2>
-            <p>The .table-striped class adds zebra-stripes to a table:</p>            
+            <h2>Jobs Features</h2>
+
+            <button id="1" data-toggle="modal" data-target="#addJobModal">+</button>
+
+            <div class="modal fade" id="addJobModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add User Form</h4>
+                        </div>
+                        <form id="addJobForm" class="modal-body" enctype="multipart/form-data">                         
+                            <input class="trip_input" type="text" name ="add_major" placeholder="Major:"/>
+                            <input class="trip_input" type="text" name ="add_company" placeholder="Company:"/>
+                            <input class="trip_input" type="text" name ="add_address" placeholder="Address:"/>
+                            <input class="trip_input" type="text" name ="add_position" placeholder="Position:"/>
+                            <input class="trip_input" type="text" name ="add_experience" placeholder="Experience:"/>
+                            <input class="trip_input" type="text" name ="add_salary" placeholder="Salary:"/>
+                            <input class="trip_input" type="text" name ="add_recruitments" placeholder="Recruitments:"/>
+                            <input class="trip_input" type="text" name ="add_requirement" placeholder="Requirement:"/>
+                            <textarea id="add_description" name="w3review" rows="4" cols="50">Your description here:                              
+                            </textarea>
+                            <button class="trip_button" type="submit" onclick="addJob(event)" class="btn btn-default" data-dismiss="modal">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -102,32 +128,50 @@
 
                 </tbody>
             </table>
-            <h2>Striped Rows</h2>
-            <p>The .table-striped class adds zebra-stripes to a table:</p> 
+            <h2>Users Features</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
+                        <th>Age</th>
                         <th>Email</th>
+                        <th>Phone</th>
+                        <th>Password</th>
+                        <th>Role</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
+                        <td>1</td>
+                        <td>Hoàng Bảo</td>
+                        <td>Lê</td>
+                        <td>22</td>
+                        <td>bao@gmail.com</td>
+                        <td>09010909501</td>
+                        <td>123456</td>
+                        <td>1</td>
+
+
+
                     </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
+                    <!--                    <tr>
+                                            <td>Mary</td>
+                                            <td>Moe</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>July</td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>
+                                         <tr>
+                                            <td>July</td>
+                                            <td>Dooley</td>
+                                            <td>july@example.com</td>
+                                        </tr>-->
+
                 </tbody>
             </table>
             <div  class="chart">
@@ -143,32 +187,32 @@
         <script src="resources/js/alert.js"></script>
         <script src="resources/js/dashboard.js"></script>
         <script>
-                            var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-                            var yValues = [55, 49, 44, 24, 15];
-                            var barColors = [
-                                "#b91d47",
-                                "#00aba9",
-                                "#2b5797",
-                                "#e8c3b9",
-                                "#1e7145"
-                            ];
+                                var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+                                var yValues = [55, 49, 44, 24, 15];
+                                var barColors = [
+                                    "#b91d47",
+                                    "#00aba9",
+                                    "#2b5797",
+                                    "#e8c3b9",
+                                    "#1e7145"
+                                ];
 
-                            new Chart("myChart", {
-                                type: "pie",
-                                data: {
-                                    labels: xValues,
-                                    datasets: [{
-                                            backgroundColor: barColors,
-                                            data: yValues
-                                        }]
-                                },
-                                options: {
-                                    title: {
-                                        display: true,
-                                        text: "Job Analyzing"
+                                new Chart("myChart", {
+                                    type: "pie",
+                                    data: {
+                                        labels: xValues,
+                                        datasets: [{
+                                                backgroundColor: barColors,
+                                                data: yValues
+                                            }]
+                                    },
+                                    options: {
+                                        title: {
+                                            display: true,
+                                            text: "Job Analyzing"
+                                        }
                                     }
-                                }
-                            });
+                                });
         </script>
     </body>
 </html>
